@@ -11,8 +11,9 @@ packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Color Theme
-	use({ "svrana/neosolarized.nvim", requires = { "tjdevries/colorbuddy.nvim" } })
+	-- use({ "svrana/neosolarized.nvim", requires = { "tjdevries/colorbuddy.nvim" } })
 	-- use("marko-cerovac/material.nvim")
+	use("folke/tokyonight.nvim")
 
 	-- Statusline
 	use("nvim-lualine/lualine.nvim")
