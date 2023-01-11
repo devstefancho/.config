@@ -19,4 +19,7 @@ ts.setup({
 		enable = true,
 		disable = {},
 	},
+	context_commentstring = {
+		enable = true,
+	},
 })
