@@ -53,8 +53,8 @@ telescope.setup({
 
 telescope.load_extension("file_browser")
 
-vim.keymap.set("n", "<leader>pf", builtin.find_files, {}) -- Project Files
-vim.keymap.set("n", "<leader>pe", fb_open) -- File Browser Extension Open
+vim.keymap.set("n", "<C-p>", builtin.find_files, {}) -- Project Files
+vim.keymap.set("n", "<leader>pa", fb_open) -- File Browser Extension Open
 vim.keymap.set("n", "<leader>pg", builtin.git_files, {}) -- Git Files
 vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}) -- Project Search
 vim.keymap.set("n", "<leader>pb", builtin.buffers, {}) -- Buffer
