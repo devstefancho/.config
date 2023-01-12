@@ -10,6 +10,14 @@ local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
 
+local find_all_files = function()
+	builtin.find_files({
+		no_ignore = true,
+		hidden = true,
+		no_ignore_parent = true,
+	})
+end
+
 -- telescope-file-browser
 local fb_actions = require("telescope").extensions.file_browser.actions
 local fb_open = function()
@@ -53,9 +61,9 @@ telescope.setup({
 
 telescope.load_extension("file_browser")
 
-vim.keymap.set("n", "<C-p>", builtin.find_files, {}) -- Project Files
-vim.keymap.set("n", "<leader>pa", fb_open) -- File Browser Extension Open
-vim.keymap.set("n", "<leader>pg", builtin.git_files, {}) -- Git Files
+vim.keymap.set("n", "<leader>pa", find_all_files, {}) -- Project All Files
+vim.keymap.set("n", "<leader>pf", fb_open) -- File Browser Extension Open
+vim.keymap.set("n", "<C-p>", builtin.git_files, {}) -- Git Files
 vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}) -- Project Search
 vim.keymap.set("n", "<leader>pb", builtin.buffers, {}) -- Buffer
 vim.keymap.set("n", "<leader>ph", builtin.help_tags, {}) -- Help Tags
