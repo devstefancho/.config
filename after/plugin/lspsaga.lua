@@ -1,15 +1,4 @@
-local status, saga = pcall(require, "lspsaga")
-if not status then
-	return
-end
-
 local keymap = vim.keymap.set
-
-saga.init_lsp_saga({
-	server_filetype_map = {
-		typescript = "typescript",
-	},
-})
 
 local opts = { noremap = true, silent = true }
 keymap("n", "<leader>dg", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- Diagnostic
