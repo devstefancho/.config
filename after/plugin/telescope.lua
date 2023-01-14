@@ -22,7 +22,7 @@ end
 
 -- telescope-file-browser
 local fb_actions = require("telescope").extensions.file_browser.actions
-local fb_open = function()
+local file_browser = function()
 	telescope.extensions.file_browser.file_browser({
 		path = "%:p:h",
 		cwd = telescope_buffer_dir(),
@@ -64,9 +64,15 @@ telescope.setup({
 
 telescope.load_extension("file_browser")
 
-keymap("n", "<leader>pa", find_all_files, {}) -- Project All Files
-keymap("n", "<leader>pf", fb_open) -- File Browser Extension Open
-keymap("n", "<C-p>", builtin.git_files, {}) -- Git Files
-keymap("n", "<leader>ps", builtin.live_grep, {}) -- Project Search
-keymap("n", "<leader>pb", builtin.buffers, {}) -- Buffer
-keymap("n", "<leader>ph", builtin.help_tags, {}) -- Help Tags
+-- Search Files or Buffers
+keymap("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
+keymap("n", "<leader>sf", find_all_files, { desc = "[S]earch [F]iles" })
+keymap("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+keymap("n", "<leader>fb", file_browser, { desc = "[F]ile [B]rowser" })
+keymap("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+keymap("n", "<C-p>", builtin.git_files, { desc = "Search by Git files" })
+
+-- Helper
+keymap("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+keymap("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+keymap("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
