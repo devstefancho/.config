@@ -10,6 +10,10 @@ ts.setup({
 		"tsx",
 		"json",
 		"css",
+		"javascript",
+		"typescript",
+		"help",
+		"vim",
 	},
 	highlight = {
 		enable = true,

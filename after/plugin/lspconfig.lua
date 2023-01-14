@@ -34,7 +34,7 @@ nvim_lsp.tsserver.setup({
 		on_attach(client, bufnr)
 		enable_format_on_save(client, bufnr)
 	end,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
 })
 
