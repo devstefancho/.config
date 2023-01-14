@@ -1,8 +1,9 @@
-local keymap = vim.keymap.set
 local status, saga = pcall(require, "lspsaga")
 if not status then
 	return
 end
+
+local keymap = vim.keymap.set
 
 saga.init_lsp_saga({
 	server_filetype_map = {

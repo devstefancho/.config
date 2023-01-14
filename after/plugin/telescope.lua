@@ -2,6 +2,8 @@ local status, telescope = pcall(require, "telescope")
 if not status then
 	return
 end
+
+local keymap = vim.keymap.set
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
@@ -61,9 +63,9 @@ telescope.setup({
 
 telescope.load_extension("file_browser")
 
-vim.keymap.set("n", "<leader>pa", find_all_files, {}) -- Project All Files
-vim.keymap.set("n", "<leader>pf", fb_open) -- File Browser Extension Open
-vim.keymap.set("n", "<C-p>", builtin.git_files, {}) -- Git Files
-vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}) -- Project Search
-vim.keymap.set("n", "<leader>pb", builtin.buffers, {}) -- Buffer
-vim.keymap.set("n", "<leader>ph", builtin.help_tags, {}) -- Help Tags
+keymap("n", "<leader>pa", find_all_files, {}) -- Project All Files
+keymap("n", "<leader>pf", fb_open) -- File Browser Extension Open
+keymap("n", "<C-p>", builtin.git_files, {}) -- Git Files
+keymap("n", "<leader>ps", builtin.live_grep, {}) -- Project Search
+keymap("n", "<leader>pb", builtin.buffers, {}) -- Buffer
+keymap("n", "<leader>ph", builtin.help_tags, {}) -- Help Tags

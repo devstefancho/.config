@@ -3,6 +3,8 @@ if not status then
 	return
 end
 
+local keymap = vim.keymap.set
+
 bufferline.setup({
 	options = {
 		mode = "tabs",
@@ -25,5 +27,5 @@ bufferline.setup({
 })
 
 -- Tab Movement
-vim.keymap.set("n", "<TAB>", "<Cmd>BufferLineCycleNext<CR>") -- go to next buffer
-vim.keymap.set("n", "<S-TAB>", "<Cmd>BufferLineCyclePrev<CR>") -- go to prev buffer
+keymap("n", "<TAB>", "<Cmd>BufferLineCycleNext<CR>") -- go to next buffer
+keymap("n", "<S-TAB>", "<Cmd>BufferLineCyclePrev<CR>") -- go to prev buffer

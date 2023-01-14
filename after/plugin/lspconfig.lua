@@ -3,6 +3,7 @@ if not status then
 	return
 end
 
+local keymap = vim.keymap.set
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -21,10 +22,10 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	keymap("n", "gD", vim.lsp.buf.declaration, bufopts)
+	keymap("n", "gd", vim.lsp.buf.definition, bufopts)
+	keymap("n", "K", vim.lsp.buf.hover, bufopts)
+	keymap("n", "gi", vim.lsp.buf.implementation, bufopts)
 end
 
 -- Setup LSP
