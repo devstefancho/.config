@@ -21,14 +21,7 @@ packer.startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig") -- LSP Configuratios
 	use("onsails/lspkind-nvim") -- Vscode-like pictograms
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			local saga = require("lspsaga")
-			saga.init_lsp_saga({})
-		end,
-	}) -- LSP performant UI
+	use({ "glepnir/lspsaga.nvim" }) -- LSP performant UI
 
 	-- Auto Completion
 	use("hrsh7th/cmp-buffer") -- Nvim-cmp source for buffer words
