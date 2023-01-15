@@ -1,51 +1,57 @@
-# Get Started
+This Project is configuration for neovim as a Personalized IDE. (a.k.a PDE, Personalized Development Environment)
+I usaully work on Web frontend area (using Javascript, Typescript, React).
+and start to learn on Lua language.
 
-## Path
+So if you are working on Web Frontend. Maybe it fits for you.
+I will update more configuration and someday I plan to make docs about how to use this project.
+I learned a lot from other youtubers and blogers.
+You can find about references from this [wiki](https://github.com/devstefancho/init.lua/wiki/Reference-for-this-project) pages.
+If you have any question, Feel free to share your thought on the [issue](https://github.com/devstefancho/init.lua/issues)
+
+---
+
+### Table of Contents
+
+- [QuickStart](#quickStart)
+- [More Details](#more-details)
+
+---
+
+# QuickStart
+
+## Requirements
 
 clone this project under `~/.config/nvim/`
 
-## Packer
+- neovim >= v0.8.2 (essential)
+- node >= v18.10.0 (recommended)
 
-Install [packer](https://github.com/wbthomason/packer.nvim#quickstart)
+## More Installation
+
+You need more installations
+run these command in your terminal.
 
 ```shell
+# Install Packer to install other plugins
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 ```shell
-# Install packer in vim
-:PackerInstall
-```
-
-## LSP
-
-```shell
-# Install Required LSP
+# Install Your Required LSP
 brew install lua-language-server
 npm install -g typescript-language-server typescript
-```
 
-## TreeSitter
-
-```shell
+# Treesitter
 brew install tree-sitter
-```
 
-## Rg
-
-```shell
+# RipGrep for fast search
 brew install rg
-```
 
-## Code Formatter
-
-```shell
+# Prettier
 npm install -g @fsouza/prettierd
 ```
 
-# Ref
+# More Details
 
-- How to setup neovim (https://dev.to/craftzdog/my-neovim-setup-for-react-typescript-tailwind-css-etc-58fb)
-- About lua (https://github.com/krapjost/nvim-lua-guide-kr)
-- About LSP Configuration (https://levelup.gitconnected.com/a-step-by-step-guide-to-configuring-lsp-in-neovim-for-coding-in-next-js-a052f500da2)
+More details can see from [wiki pages](https://github.com/devstefancho/init.lua/wiki)
