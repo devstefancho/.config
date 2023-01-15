@@ -21,7 +21,6 @@ keymap("n", "ss", ":split<CR><C-w>w", { silent = true })
 keymap("n", "sv", ":vsplit<CR><C-w>w", { silent = true })
 
 -- Move window
-keymap("n", "<leader><leader>", "<C-w>w", { silent = true })
 keymap("", "s<left>", "<C-w>h")
 keymap("", "s<up>", "<C-w>k")
 keymap("", "s<down>", "<C-w>j")
