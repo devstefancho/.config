@@ -50,6 +50,9 @@ brew install rg
 
 # Prettier
 npm install -g @fsouza/prettierd
+
+# Lazy Git
+brew install jesseduffield/lazygit/lazygit
 ```
 
 # More Details
