@@ -29,6 +29,8 @@ local on_attach = function(client, bufnr)
 	keymap("n", "gd", vim.lsp.buf.definition, bufopts)
 	keymap("n", "K", vim.lsp.buf.hover, bufopts)
 	keymap("n", "gi", vim.lsp.buf.implementation, bufopts)
+	keymap("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = 0 })
+	keymap("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
 end
 
 -- Setup LSP

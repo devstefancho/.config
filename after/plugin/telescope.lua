@@ -74,5 +74,7 @@ keymap("n", "<C-p>", builtin.git_files, { desc = "Search by Git files" })
 
 -- Helper
 keymap("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-keymap("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 keymap("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+
+-- Diagnostics
+keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[D]iagnostics [L]ist" })
