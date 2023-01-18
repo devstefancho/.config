@@ -11,9 +11,7 @@ t.setup({
 	direction = "float",
 })
 
-function _G.set_terminal_keymaps()
-	keymap("t", "<ESC>", [[<C-\><C-n>]], { buffer = 0 })
-end
+function _G.set_terminal_keymaps() end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
@@ -26,9 +24,9 @@ function _lazygit_toggle()
 	lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap(
+keymap(
 	"n",
-	"<leader>lg",
+	"<leader>z",
 	"<cmd>lua _lazygit_toggle()<CR>",
 	{ noremap = true, silent = true, desc = "Show [L]azy [G]it" }
 )
