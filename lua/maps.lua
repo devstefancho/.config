@@ -41,3 +41,8 @@ keymap("n", "<leader>n", ":noh<CR>")
 
 -- Delete to void register, then paste previous register
 keymap("v", "<leader>p", '"_dP')
+
+-- Tab Movement
+-- # Caution!! Do not use <Tab> for keymap, <Tab> is vim major key for jump motions (see :help jump-motions)
+keymap("n", "H", "<Cmd>BufferLineCyclePrev<CR>") -- go to prev buffer
+keymap("n", "L", "<Cmd>BufferLineCycleNext<CR>") -- go to next buffer
