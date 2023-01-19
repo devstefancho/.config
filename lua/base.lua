@@ -9,7 +9,7 @@ vim.wo.relativenumber = true
 
 vim.opt.autoindent = true
 vim.opt.title = true
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.backup = false
 -- vim.opt.backupskip = '/tmp/*,/private/tmp/*' -- No backup file for this pattern files
 vim.opt.showcmd = true
