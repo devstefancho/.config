@@ -48,7 +48,7 @@ telescope.setup({
 		file_browser = {
 			theme = "dropdown", -- ivy, cursor, dropdown (:h telescope에서 theme 참고)
 			-- disables netrw and use telescope-file-browser in its place
-			hijack_netrw = true,
+			hijack_netrw = false,
 			mappings = {
 				-- your custom insert mode mappings
 				["i"] = {},
