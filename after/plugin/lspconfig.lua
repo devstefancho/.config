@@ -17,7 +17,7 @@ local enable_format_on_save = function(_, bufnr)
 end
 
 -- Keymap (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
-keymap("n", "<space>e", vim.diagnostic.open_float, { noremap = true, silent = true, desc = "Diagnostics [E]rror" })
+keymap("n", "<leader>do", vim.diagnostic.open_float, { noremap = true, silent = true, desc = "[D]iagnostics [O]pen" })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
