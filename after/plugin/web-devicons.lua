@@ -1,9 +1,9 @@
 local status, icons = pcall(require, "nvim-web-devicons")
 if not status then
-	return
+  return
 end
 
 icons.setup({
-	override = {},
-	default = true,
+  override = {},
+  default = true,
 })

@@ -266,5 +266,5 @@ nvim_tree.setup(
         watcher = false,
       },
     },
-  }-- END_DEFAULT_OPTS
+  } -- END_DEFAULT_OPTS
 )

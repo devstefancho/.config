@@ -1,10 +1,10 @@
 local status, n = pcall(require, "neosolarized")
 if not status then
-	return
+  return
 end
 
 n.setup({
-	comment_italics = true,
+  comment_italics = true,
 })
 
 local colorbuddy = require("colorbuddy.init")

@@ -1,14 +1,14 @@
 local status, lspsaga = pcall(require, "lspsaga")
 if not status then
-	return
+  return
 end
 
 local keymap = vim.keymap.set
 
 lspsaga.setup({
-	symbol_in_winbar = {
-		enable = false,
-	},
+  symbol_in_winbar = {
+    enable = false,
+  },
 })
 
 local opts = { noremap = true, silent = true }
