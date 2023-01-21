@@ -20,6 +20,17 @@ local find_all_files = function()
   })
 end
 
+local search_only_certain_files = function()
+  require("telescope.builtin").find_files({
+    find_command = {
+      "rg",
+      "--files",
+      "--type",
+      vim.fn.input("Type: "),
+    },
+  })
+end
+
 -- telescope-file-browser
 local fb_actions = require("telescope").extensions.file_browser.actions
 local file_browser = function()
@@ -71,6 +82,7 @@ keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
 keymap("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
 keymap("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
+keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Files" })
 
 -- Helper
 keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
