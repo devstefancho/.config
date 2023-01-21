@@ -64,17 +64,17 @@ telescope.setup({
 
 telescope.load_extension("file_browser")
 
--- Search Files or Buffers
-keymap("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
-keymap("n", "<leader>sf", find_all_files, { desc = "[S]earch [F]iles" })
-keymap("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-keymap("n", "<leader>fb", file_browser, { desc = "[F]ile [B]rowser" })
-keymap("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-keymap("n", "<C-p>", builtin.git_files, { desc = "Search by Git files" })
+-- Files
+keymap("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld-files" })
+keymap("n", "<leader>ff", find_all_files, { desc = "[F]ind [F]iles" })
+keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
+keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
+keymap("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
+keymap("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
 
 -- Helper
-keymap("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-keymap("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
+keymap("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
 
 -- Diagnostics
-keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[D]iagnostics [L]ist" })
+keymap("n", "<leader><leader>d", builtin.diagnostics, { desc = "[D]iagnostics" })
