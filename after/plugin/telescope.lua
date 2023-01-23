@@ -6,6 +6,7 @@ end
 local keymap = vim.keymap.set
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
 
 -- Information about "%:p:h" (:tab h %:p)
 local function telescope_buffer_dir()
@@ -45,6 +46,17 @@ local file_browser = function()
   })
 end
 
+local curbuf = function()
+  local opt = themes.get_dropdown({
+    sorting_strategy = "ascending",
+    winblend = 10,
+    layout_config = {
+      height = 0.8,
+    },
+  })
+  builtin.current_buffer_fuzzy_find(opt)
+end
+
 -- Setup
 telescope.setup({
   defaults = {
@@ -77,12 +89,13 @@ telescope.load_extension("file_browser")
 
 -- Files
 keymap("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld-files" })
-keymap("n", "<leader>ff", find_all_files, { desc = "[F]ind [F]iles" })
+keymap("n", "<leader>fd", find_all_files, { desc = "[F]ind files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
 keymap("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
 keymap("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
 keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Files" })
+keymap("n", "<leader>ff", curbuf, { desc = "[F]ind in current buffer [F]ile" })
 
 -- Helper
 keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
