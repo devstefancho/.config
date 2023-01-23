@@ -34,6 +34,31 @@ local on_attach = function(client, bufnr)
   keymap("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
 end
 
+-- Filtering table
+local function filter(arr, fn)
+  if type(arr) ~= "table" then
+    return arr
+  end
+
+  local filtered = {}
+  for k, v in pairs(arr) do
+    if fn(v, k, arr) then
+      table.insert(filtered, v)
+    end
+  end
+
+  return filtered
+end
+
+-- Filter for react/index.d.ts in quick fix list
+local function filterDefinitionFile(value)
+  local uri = value.uri or value.targetUri
+  if not uri then
+    return false
+  end
+  return string.match(uri, "index.d.ts") == nil
+end
+
 -- Setup LSP
 nvim_lsp.tsserver.setup({
   on_attach = function(client, bufnr)
@@ -42,6 +67,17 @@ nvim_lsp.tsserver.setup({
   end,
   filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
+  handlers = {
+    -- See {https://github.com/typescript-language-server/typescript-language-server/issues/216}
+    ["textDocument/definition"] = function(err, result, method, ...)
+      if vim.tbl_islist(result) and #result > 1 then
+        local filtered_result = filter(result, filterDefinitionFile)
+        return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
+      end
+
+      vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+    end,
+  },
 })
 
 nvim_lsp.sumneko_lua.setup({
