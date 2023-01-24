@@ -10,10 +10,6 @@ end
 
 local keymap = vim.keymap.set
 
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
@@ -26,7 +22,6 @@ keymap("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { desc = "[F]ile [E]xplorer"
 nvim_tree.setup(
   {
     auto_reload_on_write = true,
-    disable_netrw = false,
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
