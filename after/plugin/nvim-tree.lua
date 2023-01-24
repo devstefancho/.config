@@ -241,12 +241,6 @@ nvim_tree.setup(
     notify = {
       threshold = vim.log.levels.INFO,
     },
-    ui = {
-      confirm = {
-        remove = true,
-        trash = true,
-      },
-    },
     log = {
       enable = false,
       truncate = false,
