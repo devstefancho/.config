@@ -49,6 +49,13 @@ function M.setup()
         on_attach = f.tsserver_on_attach,
         handlers = f.tsserver_handlers,
       })
+      end,
+    ["sumneko_lua"] = function()
+      lspconfig.sumneko_lua.setup({
+        capabilities = capabilities,
+        on_attach = f.lua_on_attach,
+        settings = servers.sumneko_lua,
+      })
     end,
   })
 end

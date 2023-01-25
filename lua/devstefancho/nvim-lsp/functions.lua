@@ -76,6 +76,12 @@ function M.tsserver_on_attach(client, bufnr)
   enable_format_on_save(client, bufnr)
 end
 
+function M.lua_on_attach(client, bufnr)
+  -- See {https://github.com/typescript-language-server/typescript-language-server/issues/216}
+  on_attach_keymaps()
+  enable_format_on_save(client, bufnr)
+end
+
 function M.on_attach(_, bufnr)
   on_attach_keymaps()
 end
