@@ -8,8 +8,8 @@ local has = function(x)
   return vim.fn.has(x) == 1
 end
 
-local is_mac = has("devstefancho.macunix")
-local is_win = has("devstefancho.win32")
+local is_mac = has("macunix")
+local is_win = has("win32")
 
 if is_mac then
   require("devstefancho.macos")
