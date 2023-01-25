@@ -57,7 +57,12 @@ packer.startup(function(use)
   use("norcalli/nvim-colorizer.lua")
 
   -- managing & installing lsp servers, linters & formatters
-  use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
+  use({
+    "williamboman/mason.nvim",
+    config = function()
+      require("devstefancho.nvim-lsp.mason").setup()
+    end,
+  }) -- in charge of managing lsp servers, linters & formatters
   use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
   -- Code Formatting
