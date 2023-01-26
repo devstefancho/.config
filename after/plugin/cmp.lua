@@ -1,11 +1,30 @@
 -- AutoCompletion (https://github.com/hrsh7th/nvim-cmp)
--- Vs-Like pictogram (https://github.com/onsails/lspkind.nvim)
 local status, cmp = pcall(require, "cmp")
 if not status then
   return
 end
 
-local lspkind = require("lspkind")
+local source_names = {
+  nvim_lsp = "(LSP)",
+  emoji = "(Emoji)",
+  path = "(Path)",
+  calc = "(Calc)",
+  cmp_tabnine = "(Tabnine)",
+  vsnip = "(Snippet)",
+  luasnip = "(Snippet)",
+  buffer = "(Buffer)",
+  tmux = "(TMUX)",
+  copilot = "(Copilot)",
+  treesitter = "(TreeSitter)",
+}
+
+local duplicates_default = 0
+local duplicates = {
+  buffer = 1,
+  path = 1,
+  nvim_lsp = 0,
+  luasnip = 1,
+}
 
 cmp.setup({
   -- snippet은 자동완성에서 confirm에서 오류가 발생하지 않으려면 필요함
@@ -30,18 +49,20 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
   formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text", -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function(entry, vim_item)
-        return vim_item
-      end,
-    }),
+    fields = { "kind", "abbr", "menu" },
+    max_width = 0,
+    format = function(entry, vim_item)
+      -- See :help complete-items
+      vim_item.menu = source_names[entry.source.name]
+      vim_item.kind = require("devstefancho.icons").kind[vim_item.kind]
+      vim_item.dup = duplicates[entry.source.name] or duplicates_default
+      return vim_item
+    end,
   },
 })
 

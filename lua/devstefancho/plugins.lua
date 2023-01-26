@@ -20,7 +20,6 @@ packer.startup(function(use)
 
   -- LSP
   use("neovim/nvim-lspconfig") -- LSP Configuratios
-  use("onsails/lspkind-nvim") -- Vscode-like pictograms
   use({ "glepnir/lspsaga.nvim" }) -- LSP performant UI
 
   -- Auto Completion
