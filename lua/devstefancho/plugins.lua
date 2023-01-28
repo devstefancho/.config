@@ -38,7 +38,6 @@ packer.startup(function(use)
   })
   use("nvim-treesitter/playground")
 
-  -- Tag, Bracket 자동완성
   use("windwp/nvim-autopairs")
   use("windwp/nvim-ts-autotag")
 
@@ -97,4 +96,7 @@ packer.startup(function(use)
 
   -- indent marker
   use("lukas-reineke/indent-blankline.nvim")
+
+  -- Change Surrounding
+  use("tpope/vim-surround")
 end)
