@@ -5,20 +5,15 @@ local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 -- Default Keymaps for LSP
 local on_attach_keymaps = function()
+  require("devstefancho.nvim-lsp.lspsaga").mapping()
   -- Keymap (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
-  keymap("n", "<leader>do", vim.diagnostic.open_float, { noremap = true, silent = true, desc = "[D]iagnostics [O]pen" })
   keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP [C]ode [A]ction", buffer = 0 })
   keymap("n", "gD", vim.lsp.buf.declaration, { desc = "LSP [g]o to [D]eclaration", buffer = 0 })
   keymap("n", "gd", vim.lsp.buf.definition, { desc = "LSP [g]o to [d]efinition", buffer = 0 })
-  keymap("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", buffer = 0 })
   keymap("n", "gi", vim.lsp.buf.implementation, { desc = "LSP [g]o to [i]mplementation", buffer = 0 })
-  keymap("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "[d]iagnostic [n]ext", buffer = 0 })
-  keymap("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "[d]iagnostic [p]rev", buffer = 0 })
-  keymap("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP [r]ename", buffer = 0 })
 
-  -- See `:help K` for why this keymap
-  keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
   keymap("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help Documentation" })
+  keymap("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP [r]ename", buffer = 0 }) -- same as
 end
 
 local enable_format_on_save = function(_, bufnr)
