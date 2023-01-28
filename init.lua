@@ -1,3 +1,4 @@
+require("devstefancho.globals")
 require("devstefancho.base")
 require("devstefancho.highlights")
 require("devstefancho.maps")
