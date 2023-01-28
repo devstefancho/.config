@@ -31,6 +31,20 @@ function M.setup()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+  mason_lspconfig.setup({
+    ensure_installed = {
+      "vimls",
+      "sumneko_lua",
+      "tsserver",
+      "graphql",
+      "cssls",
+      "tailwindcss",
+      "jsonls",
+      "yamlls",
+      "cssls",
+    },
+  })
+
   mason_lspconfig.setup_handlers({
     function(server_name)
       lspconfig[server_name].setup({
@@ -49,7 +63,7 @@ function M.setup()
         on_attach = f.tsserver_on_attach,
         handlers = f.tsserver_handlers,
       })
-      end,
+    end,
     ["sumneko_lua"] = function()
       lspconfig.sumneko_lua.setup({
         capabilities = capabilities,
