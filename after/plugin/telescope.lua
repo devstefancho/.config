@@ -103,4 +103,4 @@ keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
 keymap("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
 
 -- Diagnostics
-keymap("n", "<leader><leader>d", builtin.diagnostics, { desc = "[D]iagnostics" })
+keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[d]iagnostic [l]ist" })
