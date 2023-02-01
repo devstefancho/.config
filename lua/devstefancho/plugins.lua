@@ -99,4 +99,7 @@ packer.startup(function(use)
 
   -- Change Surrounding
   use("tpope/vim-surround")
+
+  -- Codi
+  use("metakirby5/codi.vim")
 end)
