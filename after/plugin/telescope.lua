@@ -57,6 +57,16 @@ local curbuf = function()
   builtin.current_buffer_fuzzy_find(opt)
 end
 
+local find_commands = function()
+  local opts = themes.get_dropdown({
+    winblend = 10,
+    border = true,
+    previewer = false,
+    shorten_path = false,
+  })
+  builtin.commands(opts)
+end
+
 -- Setup
 telescope.setup({
   defaults = {
@@ -101,6 +111,7 @@ keymap("n", "<leader>ff", curbuf, { desc = "[F]ind in current buffer [F]ile" })
 -- Helper
 keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
 keymap("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
+keymap("n", "<leader>fm", find_commands, { desc = "[f]ind [c]ommands" })
 
 -- Diagnostics
 keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[d]iagnostic [l]ist" })
