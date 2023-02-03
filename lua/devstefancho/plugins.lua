@@ -93,6 +93,7 @@ packer.startup(function(use)
     },
     tag = "nightly", -- optional, updated every week. (see issue #1193)
   })
+  use("vifm/vifm.vim")
 
   -- indent marker
   use("lukas-reineke/indent-blankline.nvim")
