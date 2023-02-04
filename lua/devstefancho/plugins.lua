@@ -103,4 +103,17 @@ packer.startup(function(use)
 
   -- Codi
   use("metakirby5/codi.vim")
+
+  -- Debugger
+  use("mfussenegger/nvim-dap")
+  use("rcarriga/nvim-dap-ui")
+  use("folke/neodev.nvim") -- this is only for nvim-dap-ui
+  use("nvim-telescope/telescope-dap.nvim")
+  use("theHamsta/nvim-dap-virtual-text")
+  use("mxsdev/nvim-dap-vscode-js") -- need to debug javascript
+  use({
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile",
+  }) -- this is only for mxsdev/nvim-dap-vscode-js
 end)
