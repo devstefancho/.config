@@ -42,6 +42,7 @@ function M.setup()
       "jsonls",
       "yamlls",
       "cssls",
+      "html",
     },
   })
 

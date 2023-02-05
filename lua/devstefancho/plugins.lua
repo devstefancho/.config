@@ -116,4 +116,7 @@ packer.startup(function(use)
     opt = true,
     run = "npm install --legacy-peer-deps && npm run compile",
   }) -- this is only for mxsdev/nvim-dap-vscode-js
+
+  -- Emmet
+  use("mattn/emmet-vim")
 end)
