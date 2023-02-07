@@ -55,6 +55,14 @@ npm install -g @fsouza/prettierd
 brew install jesseduffield/lazygit/lazygit
 ```
 
+Download NerdFont(JetBrainsMonoRegular) for nvim-dap-ui
+Go to Iterm2 > Preference > Profiles > Text > Fonts
+and check `Use a different font for non-ASCII text` then change font to JetBrainsMonoRegular
+
+```shell
+curl -fL https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Nerd%20Font%20Complete%20Mono%20Regular.ttf -o ~/Library/Fonts/JetBrainsMonoRegular.ttf
+```
+
 # More Details
 
 More details can see from [wiki pages](https://github.com/devstefancho/init.lua/wiki)
