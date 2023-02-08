@@ -60,9 +60,15 @@ end
 local find_commands = function()
   local opts = themes.get_dropdown({
     winblend = 10,
-    border = true,
     previewer = false,
     shorten_path = false,
+    layout_config = {
+      center = {
+        height = 0.4,
+        prompt_position = "top",
+        width = 0.5,
+      },
+    },
   })
   builtin.commands(opts)
 end
