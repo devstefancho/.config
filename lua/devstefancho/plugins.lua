@@ -121,10 +121,5 @@ packer.startup(function(use)
   use("mattn/emmet-vim")
 
   -- Zenmode
-  use({
-    "Pocco81/true-zen.nvim",
-    config = function()
-      require("true-zen").setup()
-    end,
-  })
+  use("Pocco81/true-zen.nvim")
 end)
