@@ -122,4 +122,7 @@ packer.startup(function(use)
 
   -- Zenmode
   use("Pocco81/true-zen.nvim")
+
+  -- Pretty Fold
+  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)
