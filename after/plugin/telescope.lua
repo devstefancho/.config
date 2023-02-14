@@ -115,9 +115,9 @@ keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Fi
 keymap("n", "<leader>ff", curbuf, { desc = "[F]ind in current buffer [F]ile" })
 
 -- Helper
-keymap("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
+keymap("n", "<leader>f?", builtin.help_tags, { desc = "[f]ind help [?]" })
 keymap("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
-keymap("n", "<leader>fm", find_commands, { desc = "[f]ind [c]ommands" })
+keymap("n", "<leader>fm", find_commands, { desc = "[f]ind co[m]mands" })
 
 -- Diagnostics
 keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[d]iagnostic [l]ist" })
