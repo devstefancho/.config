@@ -18,11 +18,12 @@ local find_all_files = function()
     no_ignore = true,
     hidden = true,
     no_ignore_parent = true,
+    find_command = { "rg", "--no-ignore", "--files" },
   })
 end
 
 local search_only_certain_files = function()
-  require("telescope.builtin").find_files({
+  builtin.find_files({
     find_command = {
       "rg",
       "--files",
