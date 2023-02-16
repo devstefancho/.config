@@ -107,13 +107,13 @@ telescope.load_extension("file_browser")
 
 -- Files
 keymap("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld-files" })
-keymap("n", "<leader>fd", find_all_files, { desc = "[F]ind files" })
+keymap("n", "<leader>ff", find_all_files, { desc = "[F]ind files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
-keymap("n", "<leader>fw", builtin.live_grep, { desc = "[f]ind [w]ords by grep" })
+keymap("n", "<leader>fd", builtin.live_grep, { desc = "[f]ind by grep" })
 keymap("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
 keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Files" })
-keymap("n", "<leader>ff", curbuf, { desc = "[F]ind in current buffer [F]ile" })
+keymap("n", "<leader>f;", curbuf, { desc = "[F]ind in current buffer [F]ile" })
 
 -- Helper
 keymap("n", "<leader>f?", builtin.help_tags, { desc = "[f]ind help [?]" })
