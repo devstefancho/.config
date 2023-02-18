@@ -19,10 +19,12 @@ null_ls.setup({
     --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
     formatting.prettier, -- js/ts formatter
     formatting.stylua, -- lua formatter
+    -- [[ Example for specific path check for eslint ]]
     diagnostics.eslint_d.with({ -- js/ts linter
-      -- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
       condition = function(utils)
-        return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+        -- has_file : search nearest eslintrc fiel from the  current buffer file
+        -- root_has_file : used to check if a specific file exists in the root directory of the project
+        return utils.has_file(".eslintrc.js")
       end,
     }),
   },
