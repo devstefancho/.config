@@ -3,6 +3,7 @@ require("devstefancho.base")
 require("devstefancho.highlights")
 require("devstefancho.maps")
 require("devstefancho.plugins")
+require("devstefancho.diagnostics")
 
 -- Copy to Clipboard
 local has = function(x)
