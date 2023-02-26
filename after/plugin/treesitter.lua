@@ -15,6 +15,7 @@ ts.setup({
     "help",
     "vim",
     "markdown",
+    "markdown_inline",
     "html",
   },
   highlight = {
