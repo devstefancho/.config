@@ -74,6 +74,36 @@ local find_commands = function()
   builtin.commands(opts)
 end
 
+local find_git_files = function()
+  builtin.git_files(themes.get_dropdown({
+    previewer = false,
+    layout_config = {
+      center = {
+        height = 0.6,
+        width = 0.3,
+      },
+    },
+  }))
+end
+
+local find_git_changes = function()
+  builtin.git_status(themes.get_dropdown({
+    previewer = false,
+    layout_config = {
+      center = {
+        height = 0.6,
+        width = 0.3,
+      },
+    },
+  }))
+end
+
+local show_diagnostics_error = function()
+  require("telescope.builtin").diagnostics({
+    severity = "error",
+  })
+end
+
 -- Setup
 telescope.setup({
   defaults = {
@@ -83,7 +113,7 @@ telescope.setup({
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
       },
     },
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = { "node_modules", ".worktree" },
   },
   extensions = {
     file_browser = {
@@ -107,11 +137,12 @@ telescope.load_extension("file_browser")
 
 -- Files
 keymap("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld-files" })
-keymap("n", "<leader>ff", find_all_files, { desc = "[F]ind files" })
+keymap("n", "<leader>fa", find_all_files, { desc = "[f]ind [a]ll files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
 keymap("n", "<leader>fd", builtin.live_grep, { desc = "[f]ind by grep" })
-keymap("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
+keymap("n", "<leader>ff", find_git_files, { desc = "Search By Git Files" })
+keymap("n", "<C-p>", find_git_changes, { desc = "Search By Git Changes" })
 keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Files" })
 keymap("n", "<leader>f;", curbuf, { desc = "[F]ind in current buffer [F]ile" })
 
@@ -121,4 +152,4 @@ keymap("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
 keymap("n", "<leader>fm", find_commands, { desc = "[f]ind co[m]mands" })
 
 -- Diagnostics
-keymap("n", "<leader>dl", builtin.diagnostics, { desc = "[d]iagnostic [l]ist" })
+keymap("n", "<leader>dl", show_diagnostics_error, { desc = "[d]iagnostic [l]ist" })
