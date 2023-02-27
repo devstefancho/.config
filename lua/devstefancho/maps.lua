@@ -46,3 +46,8 @@ keymap("v", "<leader>p", '"_dP')
 -- # Caution!! Do not use <Tab> for keymap, <Tab> is vim major key for jump motions (see :help jump-motions)
 keymap("n", "H", "<Cmd>BufferLineCyclePrev<CR>") -- go to prev buffer
 keymap("n", "L", "<Cmd>BufferLineCycleNext<CR>") -- go to next buffer
+
+-- Rotate Quickfix List
+-- [[ Warning ]] Do not use keymap starting with q such as q[ q], q is important key for quitting window
+keymap("n", "]q", "<Cmd>cnext<CR>")
+keymap("n", "[q", "<Cmd>cprev<CR>")
