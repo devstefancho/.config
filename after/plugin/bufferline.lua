@@ -10,6 +10,8 @@ bufferline.setup({
     show_close_icon = false,
     show_buffer_close_icons = false,
     color_icons = true,
+    truncate_names = false,
+    diagnostics = "nvim_lsp",
   },
   -- fg is font-color, bg is background-color
   highlights = {
