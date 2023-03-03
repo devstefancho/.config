@@ -104,6 +104,19 @@ local show_diagnostics_error = function()
   })
 end
 
+local function find_oldfiles()
+  builtin.oldfiles(themes.get_dropdown({
+    only_cwd = true,
+    previewer = false,
+    layout_config = {
+      center = {
+        height = 0.6,
+        width = 0.6,
+      },
+    },
+  }))
+end
+
 -- Setup
 telescope.setup({
   defaults = {
@@ -136,7 +149,7 @@ telescope.setup({
 telescope.load_extension("file_browser")
 
 -- Files
-keymap("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld-files" })
+keymap("n", "<leader>fo", find_oldfiles, { desc = "[F]ind [O]ld-files" })
 keymap("n", "<leader>fa", find_all_files, { desc = "[f]ind [a]ll files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
