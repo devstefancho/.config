@@ -31,7 +31,6 @@ function M.setup()
   mason_lspconfig.setup({
     ensure_installed = {
       "vimls",
-      "sumneko_lua",
       "tsserver",
       "graphql",
       "cssls",
