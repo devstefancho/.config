@@ -1,17 +1,14 @@
 local M = {}
 
 local f = require("devstefancho.nvim-lsp.functions")
-local servers = {
-  -- rust_analyzer = {},
-  -- tsserver = {},
 
+local servers = {
   sumneko_lua = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
+        globals = { "vim", "hs" }, -- hs for hammerspoon
       },
-      workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
