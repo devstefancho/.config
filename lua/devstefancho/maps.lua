@@ -1,7 +1,5 @@
 local keymap = vim.keymap.set
 
-vim.g.mapleader = " "
-
 -- Do not yank with x
 keymap("n", "x", '"_x')
 
