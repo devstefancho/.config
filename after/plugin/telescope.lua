@@ -80,7 +80,7 @@ local find_git_files = function()
     layout_config = {
       center = {
         height = 0.6,
-        width = 0.3,
+        width = 0.6,
       },
     },
   }))
@@ -92,7 +92,7 @@ local find_git_changes = function()
     layout_config = {
       center = {
         height = 0.6,
-        width = 0.3,
+        width = 0.6,
       },
     },
   }))
@@ -101,6 +101,12 @@ end
 local show_diagnostics_error = function()
   require("telescope.builtin").diagnostics({
     severity = "error",
+  })
+end
+
+local find_by_live_grep = function()
+  builtin.live_grep({
+    -- default_text = "keymap",
   })
 end
 
@@ -153,11 +159,11 @@ keymap("n", "<leader>fo", find_oldfiles, { desc = "[F]ind [O]ld-files" })
 keymap("n", "<leader>fa", find_all_files, { desc = "[f]ind [a]ll files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 keymap("n", "<leader>fe", file_browser, { desc = "[F]ile [E]xplorer (browser)" })
-keymap("n", "<leader>fd", builtin.live_grep, { desc = "[f]ind by grep" })
-keymap("n", "<leader>ff", find_git_files, { desc = "Search By Git Files" })
+keymap("n", "<leader>fw", find_by_live_grep, { desc = "[f]ind [w]ord by grep" })
+keymap("n", "<leader>fd", find_git_files, { desc = "[f]ind in git [d]irectories" })
 keymap("n", "<C-p>", find_git_changes, { desc = "Search By Git Changes" })
 keymap("n", "<leader>fz", search_only_certain_files, { desc = "Search Certain Files" })
-keymap("n", "<leader>f;", curbuf, { desc = "[F]ind in current buffer [F]ile" })
+keymap("n", "<leader>ff", curbuf, { desc = "[f]ind in current buffer [f]ile" })
 
 -- Helper
 keymap("n", "<leader>f?", builtin.help_tags, { desc = "[f]ind help [?]" })
