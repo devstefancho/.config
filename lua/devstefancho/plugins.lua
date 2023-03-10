@@ -15,7 +15,10 @@ return {
   "hrsh7th/cmp-buffer", -- Nvim-cmp source for buffer words
   "hrsh7th/cmp-nvim-lsp", -- Nvim-cmp source for neovim's built-in LSP
   "hrsh7th/nvim-cmp", -- Completion
-  { "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" }, -- Snippet
+  {
+    "L3MON4D3/LuaSnip",
+    version = "<CurrentMajor>.*",
+  },
 
   -- Syntax Highlighings
   {
@@ -38,7 +41,7 @@ return {
   "nvim-tree/nvim-web-devicons",
 
   -- BufferLine
-  { "akinsho/bufferline.nvim", tag = "v3.*", dependencies = "nvim-tree/nvim-web-devicons" },
+  { "akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons" },
 
   -- Colorizer for color code
   "norcalli/nvim-colorizer.lua",
@@ -68,7 +71,7 @@ return {
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
-    tag = "*",
+    version = "*",
     config = function()
       require("toggleterm").setup()
     end,
