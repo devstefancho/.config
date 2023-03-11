@@ -2,7 +2,9 @@ return {
   -- Color Theme
   -- use({ "svrana/neosolarized.nvim", dependencies = { "tjdevries/colorbuddy.nvim" } })
   -- use("marko-cerovac/material.nvim")
-  "folke/tokyonight.nvim",
+  { "folke/tokyonight.nvim", cond = false },
+  { 'rose-pine/neovim', name = 'rose-pine' },
+
 
   -- Statusline
   "nvim-lualine/lualine.nvim",

@@ -37,3 +37,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("devstefancho.plugins")
+vim.cmd("colorscheme rose-pine")
