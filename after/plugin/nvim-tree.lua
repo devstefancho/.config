@@ -43,7 +43,7 @@ nvim_tree.setup(
       cursorline = true,
       debounce_delay = 15,
       width = 30,
-      hide_root_folder = false,
+      hide_root_folder = true,
       side = "left",
       preserve_window_proportions = false,
       number = false,
