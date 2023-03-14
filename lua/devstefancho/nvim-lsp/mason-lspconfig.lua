@@ -3,7 +3,7 @@ local M = {}
 local f = require("devstefancho.nvim-lsp.functions")
 
 local servers = {
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
@@ -39,6 +39,7 @@ function M.setup()
       "yamlls",
       "cssls",
       "html",
+      "lua_ls",
     },
   })
 
@@ -61,11 +62,11 @@ function M.setup()
         handlers = f.tsserver_handlers,
       })
     end,
-    ["sumneko_lua"] = function()
-      lspconfig.sumneko_lua.setup({
+    ["lua_ls"] = function()
+      lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = f.lua_on_attach,
-        settings = servers.sumneko_lua,
+        settings = servers.lua_ls,
       })
     end,
   })
