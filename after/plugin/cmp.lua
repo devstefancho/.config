@@ -26,6 +26,15 @@ local duplicates = {
   luasnip = 1,
 }
 
+-- See: https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+    return false
+  end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
 cmp.setup({
   -- snippet은 자동완성에서 confirm에서 오류가 발생하지 않으려면 필요함
   -- Error: snippet engine is not configured (https://github.com/hrsh7th/nvim-cmp/issues/373)
@@ -39,11 +48,30 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping.confirm({
+      -- this is the important line
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    }),
+    ["<Tab>"] = vim.schedule_wrap(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      else
+        fallback()
+      end
+    end),
+    ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+      else
+        fallback()
+      end
+    end),
   }),
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "buffer" },
+    { name = "copilot", group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "buffer", group_index = 2 },
   }),
   window = {
     completion = cmp.config.window.bordered(),
