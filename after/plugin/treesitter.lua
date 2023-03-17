@@ -17,6 +17,7 @@ ts.setup({
     "markdown",
     "markdown_inline",
     "html",
+    "graphql",
   },
   highlight = {
     enable = true,
