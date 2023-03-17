@@ -37,5 +37,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   command = "set nopaste",
 })
 
--- Add asterisk in block comments
-vim.opt.formatoptions:append({ "r" })
+-- Disable automatically new comment line after comment line
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
