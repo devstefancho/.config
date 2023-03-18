@@ -3,27 +3,33 @@ if not status then
   return
 end
 
-local keymap = vim.keymap.set
 local t = require("devstefancho.telescope")
+local keymap = function(lhs, rhs, desc)
+  if desc then
+    desc = "[Telescope] " .. desc
+  end
+
+  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
+end
 
 -- Files
-keymap("n", "<leader>fo", t.find_oldfiles, { desc = "[F]ind [O]ld-files" })
-keymap("n", "<leader>fa", t.find_all_files, { desc = "[f]ind [a]ll files" })
-keymap("n", "<leader>fb", t.find_buffers, { desc = "[F]ind [B]uffers" })
-keymap("n", "<leader>fe", t.file_browser, { desc = "[F]ile [E]xplorer (browser)" })
-keymap("n", "<leader>fw", t.find_by_live_grep, { desc = "[f]ind [w]ord by grep" })
-keymap("n", "<leader>fd", t.find_git_files, { desc = "[f]ind in git [d]irectories" })
-keymap("n", "<C-p>", t.find_git_changes, { desc = "Search By Git Changes" })
-keymap("n", "<leader>fz", t.search_only_certain_files, { desc = "Search Certain Files" })
-keymap("n", "<leader>ff", t.curbuf, { desc = "[f]ind in current buffer [f]ile" })
+keymap("<leader>fo", t.find_oldfiles, "[f]ind [o]ld-files")
+keymap("<leader>fa", t.find_all_files, "[f]ind [a]ll files")
+keymap("<leader>fb", t.find_buffers, "[f]ind [b]uffers")
+keymap("<leader>fe", t.file_browser, "[f]ile [e]xplorer (browser)")
+keymap("<leader>fw", t.find_by_live_grep, "[f]ind [w]ord by grep")
+keymap("<leader>fd", t.find_git_files, "[f]ind in git [d]irectories")
+keymap("<C-p>", t.find_git_changes, "Find By Git Changes")
+keymap("<leader>fz", t.search_only_certain_files, "[f]ind by certain types")
+keymap("<leader>ff", t.curbuf, "[f]ind in current buffer [f]ile")
 
 -- Helper
-keymap("n", "<leader>f?", t.find_help_tags, { desc = "[f]ind help [?]" })
-keymap("n", "<leader>fk", t.find_keymaps, { desc = "[F]ind [K]eymaps" })
-keymap("n", "<leader>fm", t.find_commands, { desc = "[f]ind co[m]mands" })
+keymap("<leader>f?", t.find_help_tags, "[f]ind help [?]")
+keymap("<leader>fk", t.find_keymaps, "[f]ind [k]eymaps")
+keymap("<leader>fm", t.find_commands, "[f]ind co[m]mands")
 
 -- Diagnostics
-keymap("n", "<leader>dl", t.show_diagnostics_error, { desc = "[d]iagnostic [l]ist" })
+keymap("<leader>dl", t.show_diagnostics_error, "[d]iagnostic [l]ist")
 
 -- Project
-keymap("", "<leader>fp", t.find_project, { desc = "[f]ind [p]roject" })
+keymap("<leader>fp", t.find_project, "[f]ind [p]roject")
