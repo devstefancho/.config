@@ -149,10 +149,21 @@ telescope.setup({
         },
       },
     },
+    project = {
+      base_dirs = {
+        { path = "~/works/" },
+      },
+      hidden_files = true, -- default: false
+      theme = "dropdown",
+      order_by = "recent",
+      search_by = "title",
+      sync_with_nvim_tree = true, -- default false
+    },
   },
 })
 
 telescope.load_extension("file_browser")
+telescope.load_extension("project")
 
 -- Files
 keymap("n", "<leader>fo", find_oldfiles, { desc = "[F]ind [O]ld-files" })
