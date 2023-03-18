@@ -132,4 +132,9 @@ function M.find_keymaps()
   builtin.keymaps()
 end
 
+-- telescope-project
+function M.find_project()
+  telescope.extensions.project.project({})
+end
+
 return M

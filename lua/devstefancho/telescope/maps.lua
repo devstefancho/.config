@@ -24,3 +24,6 @@ keymap("n", "<leader>fm", t.find_commands, { desc = "[f]ind co[m]mands" })
 
 -- Diagnostics
 keymap("n", "<leader>dl", t.show_diagnostics_error, { desc = "[d]iagnostic [l]ist" })
+
+-- Project
+keymap("", "<leader>fp", t.find_project, { desc = "[f]ind [p]roject" })

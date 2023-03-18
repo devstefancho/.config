@@ -36,8 +36,10 @@ telescope.setup({
       },
     },
     project = {
+      -- If base_dirs updated, remove ~/.local/share/nvim/telescope-projects.txt
+      -- See: https://github.com/nvim-telescope/telescope-project.nvim/issues/53
       base_dirs = {
-        { path = "~/works/" },
+        "~/works",
       },
       hidden_files = true, -- default: false
       theme = "dropdown",
