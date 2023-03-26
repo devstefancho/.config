@@ -7,9 +7,6 @@ require("devstefancho.maps")
 require("devstefancho.plugins")
 require("devstefancho.diagnostics")
 
--- Copilot
-vim.g.copilot_filetypes = { xml = false, markdown = false }
-
 -- Copy to Clipboard
 local has = function(x)
   return vim.fn.has(x) == 1
