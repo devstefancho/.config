@@ -5,7 +5,6 @@ local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 -- Default Keymaps for LSP
 local on_attach_keymaps = function()
-  require("devstefancho.nvim-lsp.lspsaga").mapping()
   -- Keymap (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
   keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP [C]ode [A]ction", buffer = 0 })
   keymap("n", "gD", vim.lsp.buf.declaration, { desc = "LSP [g]o to [D]eclaration", buffer = 0 })
