@@ -17,5 +17,3 @@ t.setup({
     colors.error = "#ff0000"
   end,
 })
-
--- vim.cmd([[colorscheme tokyonight-storm]])
