@@ -63,6 +63,12 @@ and check `Use a different font for non-ASCII text` then change font to JetBrain
 curl -fL https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Nerd%20Font%20Complete%20Mono%20Regular.ttf -o ~/Library/Fonts/JetBrainsMonoRegular.ttf
 ```
 
+## Create Symlink for iCloud
+
+```bash
+ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs ~/iCloud
+```
+
 # More Details
 
 More details can see from [wiki pages](https://github.com/devstefancho/init.lua/wiki)

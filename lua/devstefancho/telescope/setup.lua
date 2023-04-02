@@ -40,6 +40,7 @@ telescope.setup({
       -- See: https://github.com/nvim-telescope/telescope-project.nvim/issues/53
       base_dirs = {
         "~/works",
+        "~/iCloud/Documents",
       },
       hidden_files = true, -- default: false
       theme = "dropdown",
