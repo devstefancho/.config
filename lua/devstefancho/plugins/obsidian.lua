@@ -7,6 +7,8 @@ return {
         folder = "daily",
       },
     })
+
+    vim.keymap.set("n", "<M-o>", "<Cmd>ObsidianQuickSwitch<CR>", { desc = "[Obsidian] Quick Search" })
   end,
   lazy = false,
 }
