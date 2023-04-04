@@ -49,3 +49,7 @@ keymap("n", "L", "<Cmd>BufferLineCycleNext<CR>") -- go to next buffer
 -- [[ Warning ]] Do not use keymap starting with q such as q[ q], q is important key for quitting window
 keymap("n", "]q", "<Cmd>cnext<CR>")
 keymap("n", "[q", "<Cmd>cprev<CR>")
+
+-- Move Lines
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
