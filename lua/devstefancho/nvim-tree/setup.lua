@@ -3,20 +3,7 @@ if not status then
   return
 end
 
-local config_status, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status then
-  return
-end
-
-local keymap = vim.keymap.set
-
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
--- Keymap
-keymap("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { desc = "[F]ile [E]xplorer" })
+local nvim_tree_custom_mappings = require("devstefancho.nvim-tree.maps").custom_mappings
 
 -- Get Default Config (:h nvim-tree)
 nvim_tree.setup(
@@ -51,12 +38,7 @@ nvim_tree.setup(
       signcolumn = "yes",
       mappings = {
         custom_only = false,
-        list = {
-          -- user mappings go here
-          { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-          { key = "h", cb = tree_cb("close_node") },
-          { key = "v", cb = tree_cb("vsplit") },
-        },
+        list = nvim_tree_custom_mappings,
       },
       float = {
         enable = false,
