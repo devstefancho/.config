@@ -108,16 +108,16 @@ function M.find_by_live_grep()
 end
 
 function M.find_oldfiles()
-  builtin.oldfiles(themes.get_dropdown({
-    only_cwd = true,
-    previewer = false,
-    layout_config = {
-      center = {
-        height = 0.6,
-        width = 0.6,
-      },
-    },
-  }))
+  local status_ok, _ = pcall(
+    builtin.oldfiles,
+    themes.get_ivy({
+      cwd_only = true,
+    })
+  )
+
+  if not status_ok then
+    builtin.oldfiles(themes.get_ivy({}))
+  end
 end
 
 function M.find_buffers()
