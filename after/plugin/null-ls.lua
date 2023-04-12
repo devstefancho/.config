@@ -22,9 +22,23 @@ null_ls.setup({
     -- [[ Example for specific path check for eslint ]]
     diagnostics.eslint_d.with({ -- js/ts linter
       condition = function(utils)
+        -- eslint priority order https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file-formats
+        local files = {
+          ".eslintrc.js",
+          ".eslintrc.cjs",
+          ".eslintrc.yaml",
+          ".eslintrc.yml",
+          ".eslintrc.json",
+          "package.json",
+        }
+
         -- has_file : search nearest eslintrc file from the  current buffer file
         -- root_has_file : used to check if a specific file exists in the root directory of the project
-        return utils.has_file(".eslintrc.js")
+        for _, file in ipairs(files) do
+          if utils.has_file(file) then
+            return true
+          end
+        end
       end,
     }),
   },
