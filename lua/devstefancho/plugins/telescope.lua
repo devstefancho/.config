@@ -11,4 +11,11 @@ return {
   },
   "nvim-telescope/telescope-file-browser.nvim",
   "nvim-telescope/telescope-project.nvim",
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension("frecency")
+    end,
+    dependencies = { "kkharji/sqlite.lua" },
+  },
 }

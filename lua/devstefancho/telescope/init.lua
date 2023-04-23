@@ -116,7 +116,10 @@ function M.find_oldfiles()
   )
 
   if not status_ok then
-    builtin.oldfiles(themes.get_ivy({}))
+    -- builtin.oldfiles(themes.get_ivy({}))
+    telescope.extensions.frecency.frecency(themes.get_ivy({
+      workspace = "CWD",
+    }))
   end
 end
 
