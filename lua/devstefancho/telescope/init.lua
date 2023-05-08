@@ -84,15 +84,7 @@ function M.find_git_files()
 end
 
 function M.find_git_changes()
-  builtin.git_status(themes.get_dropdown({
-    previewer = false,
-    layout_config = {
-      center = {
-        height = 0.6,
-        width = 0.6,
-      },
-    },
-  }))
+  builtin.git_status(themes.get_ivy({}))
 end
 
 function M.show_diagnostics_error()
