@@ -54,12 +54,16 @@ function M.setup()
 
     -- Override tsserver lsp config
     ["tsserver"] = function()
-      lspconfig.tsserver.setup({
-        filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-        cmd = { "typescript-language-server", "--stdio" },
-        capabilities = capabilities,
-        on_attach = f.tsserver_on_attach,
-        handlers = f.tsserver_handlers,
+      require("typescript").setup({
+        disable_commands = false,
+        debug = false,
+        server = {
+          on_attach = f.tsserver_on_attach,
+          capabilities = capabilities,
+          handlers = f.tsserver_handlers,
+          filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+          cmd = { "typescript-language-server", "--stdio" },
+        },
       })
     end,
     ["lua_ls"] = function()
