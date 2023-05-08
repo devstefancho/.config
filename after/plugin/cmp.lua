@@ -19,10 +19,11 @@ local source_names = {
 }
 
 local duplicates_default = 0
+-- 0: 중복 비허용, 1: 중복 허용
 local duplicates = {
   buffer = 1,
   path = 1,
-  nvim_lsp = 0,
+  nvim_lsp = 1,
   luasnip = 1,
 }
 
