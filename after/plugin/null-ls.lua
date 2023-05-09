@@ -19,8 +19,10 @@ null_ls.setup({
     --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
     formatting.prettier, -- js/ts formatter
     formatting.stylua, -- lua formatter
+    formatting.eslint_d, -- js/ts formatter
     -- [[ Example for specific path check for eslint ]]
-    diagnostics.eslint_d.with({ -- js/ts linter
+    diagnostics.eslint_d.with({
+      -- js/ts linter
       condition = function(utils)
         -- eslint priority order https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file-formats
         local files = {
