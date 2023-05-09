@@ -2,7 +2,7 @@ local icons = require("devstefancho.icons")
 
 -- Hide virtual inline diagnostic message
 vim.diagnostic.config({
-  virtual_text = { severity = "ERROR" },
+  virtual_text = true,
   underline = { severity = "WARN" },
   signs = true,
 })
