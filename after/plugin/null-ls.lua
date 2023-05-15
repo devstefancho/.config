@@ -17,7 +17,19 @@ null_ls.setup({
   sources = {
     --  to disable file types use
     --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-    formatting.prettier, -- js/ts formatter
+    formatting.prettier.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "html",
+        "json",
+        "yaml",
+        "lua",
+      },
+    }), -- js/ts formatter
     formatting.stylua, -- lua formatter
     formatting.eslint_d, -- js/ts formatter
     -- [[ Example for specific path check for eslint ]]
