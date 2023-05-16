@@ -24,6 +24,7 @@ null_ls.setup({
         "typescript",
         "typescriptreact",
         "css",
+        "scss",
         "html",
         "json",
         "yaml",
