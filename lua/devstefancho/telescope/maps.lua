@@ -13,12 +13,12 @@ local keymap = function(lhs, rhs, desc)
 end
 
 -- Files
-keymap("<leader>fo", t.find_oldfiles, "[f]ind [o]ld-files")
+keymap("<leader>fr", t.find_oldfiles, "[f]ind [r]ecent files")
 keymap("<leader>fa", t.find_all_files, "[f]ind [a]ll files")
 keymap("<leader>fb", t.find_buffers, "[f]ind [b]uffers")
 keymap("<leader>fe", t.file_browser, "[f]ile [e]xplorer (browser)")
-keymap("<leader>fd", t.find_by_live_grep, "[f]ind with text")
-keymap("<leader>ff", t.find_git_files, "[f]ind [f]iles")
+keymap("<leader>ff", t.find_by_live_grep, "[f]ind by live grep")
+keymap("<leader>fo", t.find_git_files, "[f]ile [o]pen")
 keymap("<C-p>", t.find_git_changes, "Find By Git Changes")
 keymap("<leader>fz", t.search_only_certain_files, "[f]ind by certain types")
 keymap("<leader>f;", t.curbuf, "[f]ind in current buffer [f]ile")
