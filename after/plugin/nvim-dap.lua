@@ -76,14 +76,7 @@ require("neodev").setup({
 require("nvim-dap-virtual-text").setup()
 require("telescope").load_extension("dap")
 
--- [[ Keymaps ]]
-local keymap = function(lhs, rhs, desc)
-  if desc then
-    desc = "[DAP] " .. desc
-  end
-
-  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
-end
+local keymap = require("devstefancho.utils").createKeymap("Dap")
 
 keymap("<leader><leader>db", dap.step_back, "step_back")
 keymap("<leader><leader>di", dap.step_into, "step_into")

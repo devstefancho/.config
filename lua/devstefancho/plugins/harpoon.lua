@@ -7,8 +7,11 @@ return {
     config = function()
       local mark = require("harpoon.mark")
       local ui = require("harpoon.ui")
-      vim.keymap.set("n", "<leader>a", mark.add_file)
-      vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+      local keymap = require("devstefancho.utils").createKeymap("Harpoon")
+
+      keymap("<leader>a", mark.add_file, "[a]dd a file")
+      keymap("<C-e>", ui.toggle_quick_menu, "[e]xplore files")
     end,
   },
 }

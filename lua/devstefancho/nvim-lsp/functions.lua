@@ -1,18 +1,20 @@
 local M = {}
 
-local keymap = vim.keymap.set
+local keymap = require("devstefancho.utils").createKeymap("Lsp")
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 -- Default Keymaps for LSP
 local on_attach_keymaps = function()
-  -- Keymap (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
-  keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP [C]ode [A]ction", buffer = 0 })
-  keymap("n", "gD", vim.lsp.buf.declaration, { desc = "LSP [g]o to [D]eclaration", buffer = 0 })
-  keymap("n", "gd", vim.lsp.buf.definition, { desc = "LSP [g]o to [d]efinition", buffer = 0 })
-  keymap("n", "gi", vim.lsp.buf.implementation, { desc = "LSP [g]o to [i]mplementation", buffer = 0 })
+  local opts = { buffer = 0 }
 
-  keymap("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help Documentation" })
-  keymap("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP [r]ename", buffer = 0 }) -- same as
+  -- Keymap (https://github.com/neovim/nvim-lspconfig#suggested-configuration)
+  keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", opts)
+  keymap("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration", opts)
+  keymap("gd", vim.lsp.buf.definition, "[g]o to [d]efinition", opts)
+  keymap("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation", opts)
+
+  keymap("gK", vim.lsp.buf.signature_help, { desc = "Signature Help Documentation" })
+  keymap("<leader>r", vim.lsp.buf.rename, "[r]ename", opts) -- same as
 end
 
 local enable_format_on_save = function(_, bufnr)

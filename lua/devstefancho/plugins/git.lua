@@ -1,10 +1,4 @@
-local keymap = function(lhs, rhs, desc)
-  if desc then
-    desc = "[GitSigns] " .. desc
-  end
-
-  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
-end
+local keymap = require("devstefancho.utils").createKeymap("GitSigns")
 
 return {
   {
