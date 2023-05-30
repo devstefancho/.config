@@ -89,6 +89,7 @@ keymap("<leader><leader>dt", dap.toggle_breakpoint)
 
 -- See https://github.com/mxsdev/nvim-dap-vscode-js#installation
 require("dap-vscode-js").setup({
+  debugger_path = os.getenv("HOME") .. "/.local/share/nvim/lazy/vscode-js-debug",
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
 })
 
