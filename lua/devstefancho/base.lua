@@ -18,7 +18,6 @@ vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 999
 vim.opt.inccommand = "split"
-vim.opt.ignorecase = true
 vim.opt.smarttab = true
 vim.opt.breakindent = true
 vim.opt.shiftwidth = 2
