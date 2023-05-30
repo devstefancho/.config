@@ -29,6 +29,7 @@ null_ls.setup({
         "json",
         "yaml",
         "lua",
+        "graphql",
       },
     }), -- js/ts formatter
     formatting.stylua, -- lua formatter

@@ -1,11 +1,4 @@
--- [[ Keymaps ]]
-local keymap = function(lhs, rhs, desc)
-  if desc then
-    desc = "[Lspsaga] " .. desc
-  end
-
-  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
-end
+local keymap = require("devstefancho.utils").createKeymap("Lspsaga")
 
 -- Diagnostic
 keymap("<leader>do", "<Cmd>Lspsaga show_line_diagnostics<CR>", "[D]iagnostics [O]pen") -- same as vim.diagnostic.open_float

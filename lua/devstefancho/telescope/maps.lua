@@ -4,13 +4,7 @@ if not status then
 end
 
 local t = require("devstefancho.telescope")
-local keymap = function(lhs, rhs, desc)
-  if desc then
-    desc = "[Telescope] " .. desc
-  end
-
-  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
-end
+local keymap = require("devstefancho.utils").createKeymap("Telescope")
 
 -- Files
 keymap("<leader>fr", t.find_oldfiles, "[f]ind [r]ecent files")

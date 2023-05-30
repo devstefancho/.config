@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-local keymap = vim.keymap.set
+local keymap = require("devstefancho.utils").createKeymap("NvimUfo")
 
 ufo.setup({
   provider_selector = function(bufnr, filetype, buftype)
@@ -17,5 +17,5 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-keymap("n", "zR", ufo.openAllFolds, { desc = "open all folds" })
-keymap("n", "zM", ufo.closeAllFolds, { desc = "close all folds" })
+keymap("zR", ufo.openAllFolds, "open all folds")
+keymap("zM", ufo.closeAllFolds, "close all folds")
