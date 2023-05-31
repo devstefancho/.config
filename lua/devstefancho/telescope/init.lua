@@ -143,4 +143,38 @@ function M.start_telescope(telescope_mode)
   })
 end
 
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local sorters = require("telescope.sorters")
+
+-- custom function for obsidian old files
+function M.my_vault_oldfiles()
+  local results = vim.tbl_filter(function(val)
+    return string.find(val, "my%-vault.*%.md") -- "my-vault"과 ".md"를 포함하는 파일만 필터링
+  end, vim.v.oldfiles)
+
+  pickers
+    .new(themes.get_dropdown({
+      prompt_title = "My Vault Files",
+      finder = finders.new_table({
+        results = results,
+        entry_maker = function(entry)
+          local display_name = string.match(entry, "my%-vault/(.+)") -- 파일 경로에서 "my-vault/" 다음의 이름 추출
+          return {
+            value = entry, -- 항목의 값은 파일 경로
+            display = display_name, -- 피커에 표시될 파일 이름
+            ordinal = entry, -- 항목의 정렬 순서는 파일 경로를 기준
+          }
+        end,
+      }),
+      sorter = sorters.get_fzy_sorter(), -- Fzy 정렬 알고리즘을 사용하여 항목 정렬
+      attach_mappings = function(_, map)
+        map("i", "<CR>", actions.select_default + actions.center) -- Enter 키로 선택하면 파일 열기
+        map("n", "<CR>", actions.select_default + actions.center)
+        return true
+      end,
+    }))
+    :find()
+end
+
 return M

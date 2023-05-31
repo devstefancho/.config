@@ -6,6 +6,7 @@ require("devstefancho.highlights")
 require("devstefancho.maps")
 require("devstefancho.plugins")
 require("devstefancho.diagnostics")
+require("devstefancho.commands")
 
 -- Copy to Clipboard
 local has = function(x)
