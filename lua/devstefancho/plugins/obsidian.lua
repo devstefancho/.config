@@ -6,6 +6,9 @@ return {
       daily_notes = {
         folder = "daily",
       },
+      templates = {
+        subdir = "templates",
+      },
     })
 
     vim.keymap.set("n", "<M-o>", "<Cmd>ObsidianQuickSwitch<CR>", { desc = "[Obsidian] Quick Search" })
