@@ -22,6 +22,10 @@ return {
         'copilot#Accept("<CR>")',
         { desc = "copilot accept", expr = true, silent = true, replace_keycodes = false }
       )
+
+      vim.cmd([[
+        autocmd BufRead,BufNewFile */Leetcode/** lua vim.cmd("Copilot disable"); print('Copilot is disabled for leetcode')
+      ]]) -- disable copilot for leetcode
     end,
   },
   -- {
