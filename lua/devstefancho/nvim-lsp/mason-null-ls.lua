@@ -12,6 +12,7 @@ function M.setup()
       "prettier", -- ts/js formatter
       "stylua", -- lua formatter
       "eslint_d", -- ts/js linter
+      "black", -- python formatter
     },
     -- auto-install configured formatters & linters (with null-ls)
     automatic_installation = true,
