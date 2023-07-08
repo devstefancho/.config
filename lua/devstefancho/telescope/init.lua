@@ -177,4 +177,98 @@ function M.my_vault_oldfiles()
     :find()
 end
 
+local entry_display = require("telescope.pickers.entry_display")
+local make_entry = require("telescope.make_entry")
+local action_state = require("telescope.actions.state")
+
+function M.my_jira_commands()
+  local jira_commands = {
+    { name = "JIRA", command = "jira", description = "Jira" },
+    {
+      name = "JIRA_ISSUE",
+      command = "jira issue list",
+      description = "내가 보고 있는 이슈 리스트 확인하기",
+    },
+    -- { command = "jira issue list -w", description = "내가 보고 있는 이슈 리스트 확인하기" },
+    -- { command = "jira issue view <ISSUE_KEY>", description = "특정 이슈 확인하기" },
+    -- { command = 'jira issue move FMP-1 "In Progress"', description = "이슈 상태 이동하기" },
+    -- { command = "jira sprint list -a$(jira me)", description = "스프린트에서 내 작업 찾기" },
+    -- { command = "jira sprint list --state future", description = "다음 스프린트 작업 확인하기" },
+    -- { command = "jira issue list --history", description = "내가 여태 열어본 issue history" },
+    -- { command = 'jira issue list --history -a$(jira me) -t"Subtask-in-qa"', description = "QA 항목만 보기" },
+  }
+
+  local gen_jira_commands = function(opts)
+    local displayer = entry_display.create({
+      separator = "▏",
+      items = {
+        { width = 20 },
+        { width = 30 },
+        { remaining = true },
+      },
+    })
+
+    local make_display = function(entry)
+      return displayer({
+        { entry.name, "TelescopeResultsIdentifier" },
+        entry.command,
+        entry.description,
+      })
+    end
+
+    return function(entry)
+      return make_entry.set_default_entry_mt({
+        name = entry.name, -- required for display
+        command = entry.command, -- required for display
+        description = entry.description, -- required for display
+        --
+        value = entry.command,
+        ordinal = entry.command,
+        display = make_display,
+      }, opts)
+    end
+  end
+
+  pickers
+    .new(themes.get_dropdown({
+      prompt_title = "Jira Commands",
+      finder = finders.new_table({
+        results = jira_commands,
+        entry_maker = gen_jira_commands({}),
+      }),
+      sorter = sorters.get_fzy_sorter(),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+
+          -- Error handling
+          if selection == nil then
+            print("Nothing was selected!")
+            return
+          end
+
+          -- Close Telescope window
+          actions.close(prompt_bufnr)
+
+          -- Execute the command in a toggleterm terminal
+          vim.api.nvim_exec(
+            string.format(
+              [[
+                :ToggleTerm direction=horizontal
+                :terminal %s
+              ]],
+              selection.value
+            ),
+            true
+          )
+        end)
+
+        map("i", "<CR>", actions.select_default + actions.center)
+        map("n", "<CR>", actions.select_default + actions.center)
+        return true
+      end,
+    }))
+    :find()
+end
+
 return M
