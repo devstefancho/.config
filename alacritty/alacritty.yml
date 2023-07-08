@@ -1,0 +1,33 @@
+window:
+  padding:
+    x: 2
+    y: 2
+
+scrolling:
+  history: 10000
+  multiplier: 10
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: JetBrainsMono Nerd Font Mono
+    style: Italic
+  size: 16
+
+draw_bold_text_with_bright_colors: false
+live_config_reload: true
+
+key_bindings:
+  # Remap Altkey to Metakey
+  - { key: A, mods: Alt, chars: "\x1ba" }
+  - { key: O, mods: Alt, chars: "\x1bo" }
+  - { key: LBracket, mods: Alt, chars: "\x1b[" }
+  - { key: RBracket, mods: Alt, chars: "\x1b]" }
+  # =======================
