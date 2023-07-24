@@ -30,7 +30,7 @@ nvim_tree.setup(
       cursorline = true,
       debounce_delay = 15,
       width = 30,
-      hide_root_folder = true,
+      hide_root_folder = false,
       side = "left",
       preserve_window_proportions = false,
       number = false,
@@ -174,7 +174,7 @@ nvim_tree.setup(
       change_dir = {
         enable = true,
         global = false,
-        restrict_above_cwd = false,
+        restrict_above_cwd = true,
       },
       expand_all = {
         max_folder_discovery = 300,
