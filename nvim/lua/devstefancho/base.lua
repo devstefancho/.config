@@ -39,3 +39,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Disable automatically new comment line after comment line
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
+
+-- vimwiki 설정 --
+vim.cmd("filetype plugin on")
+vim.cmd("syntax on")
