@@ -3,11 +3,12 @@ if not status then
   return
 end
 
-local keymap = vim.keymap.set
-local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
-local themes = require("telescope.themes")
+local status_ok, custom = pcall(require, "devstefancho.custom")
+if not status_ok then
+  custom = {}
+end
 
+local actions = require("telescope.actions")
 local fb_actions = require("telescope").extensions.file_browser.actions
 -- Setup
 telescope.setup({
@@ -39,10 +40,9 @@ telescope.setup({
     project = {
       -- If base_dirs updated, remove ~/.local/share/nvim/telescope-projects.txt
       -- See: https://github.com/nvim-telescope/telescope-project.nvim/issues/53
-      base_dirs = {
-        "~/works",
+      base_dirs = vim.tbl_extend("keep", {
         "~/iCloud/Documents",
-      },
+      }, custom.telescope_project_base_dirs or {}),
       hidden_files = true, -- default: false
       theme = "dropdown",
       order_by = "recent",

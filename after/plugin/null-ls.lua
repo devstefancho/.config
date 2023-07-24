@@ -33,7 +33,13 @@ null_ls.setup({
       },
     }), -- js/ts formatter
     formatting.stylua, -- lua formatter
-    formatting.eslint_d, -- js/ts formatter
+    formatting.eslint_d.with({
+      condition = function()
+        -- v3 어드민에서는 eslint formatting 하지 않도록 처리 (line이 너무 길어서 timeout 발생함)
+        local filepath = vim.fn.expand("%:p")
+        return not string.find(filepath, "admin%-v3")
+      end,
+    }), -- js/ts formatter
     -- [[ Example for specific path check for eslint ]]
     diagnostics.eslint_d.with({
       -- js/ts linter

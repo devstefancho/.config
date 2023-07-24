@@ -27,3 +27,5 @@ keymap("<leader>dl", t.show_diagnostics_error, "[d]iagnostic [l]ist")
 
 -- Project
 keymap("<leader>fp", t.find_project, "[f]ind [p]roject")
+
+vim.keymap.set("v", "<C-f>", "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>", { noremap = true, silent = true })
