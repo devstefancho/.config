@@ -12,9 +12,6 @@ nvim_tree.setup(
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = false,
-    open_on_setup = true,
-    open_on_setup_file = false,
     sort_by = "name",
     root_dirs = {},
     prefer_startup_root = false,
@@ -124,7 +121,6 @@ nvim_tree.setup(
       update_root = false,
       ignore_list = {},
     },
-    ignore_ft_on_setup = {},
     system_open = {
       cmd = "",
       args = {},
