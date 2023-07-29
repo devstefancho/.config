@@ -40,6 +40,7 @@ function M.setup()
       "cssls",
       "html",
       "lua_ls",
+      "cssmodules_ls",
     },
   })
 
