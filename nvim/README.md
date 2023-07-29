@@ -41,6 +41,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 # Install Your Required LSP
 brew install lua-language-server
 npm install -g typescript-language-server typescript
+npm install -g cssmodules-language-server
 
 # Treesitter
 brew install tree-sitter
