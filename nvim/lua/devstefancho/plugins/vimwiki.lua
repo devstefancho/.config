@@ -32,5 +32,10 @@ return {
         },
       }
     end,
+    config = function()
+      local keymap = require("devstefancho.utils").createKeymap("Vimwiki")
+      keymap("<leader>w,", "<Cmd>VimwikiDiaryPrevDay<CR>", "prev day diary")
+      keymap("<leader>w.", "<Cmd>VimwikiDiaryNextDay<CR>", "next day diary")
+    end,
   },
 }
