@@ -28,7 +28,8 @@ return {
           syntax = "markdown",
           ext = ".md",
           diary_rel_path = "daily/",
-          diary_index = "index",
+          diary_index = "__index",
+          auto_diary_index = 1,
         },
       }
     end,
