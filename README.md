@@ -72,3 +72,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```bash
 ln -s ~/.config/hammerspoon ~/.hammerspoon
 ```
+
+한영변환을 위해 keyboard input 변경하기
+- System Preference > Keyboard > Shortcuts > Input Sources > Select the previous input source 키를 우측 command로 설정
+
