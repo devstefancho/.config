@@ -8,7 +8,7 @@ return {
       vim.g.vimwiki_hl_cb_checked = 1
       vim.g.vimwiki_autowriteall = 0
       vim.g.vimwiki_listsym_rejected = "-"
-      vim.g.vimwiki_listsyms = " X"
+      vim.g.vimwiki_listsyms = " .oOX"
 
       vim.g.vimwiki_key_mappings = {
         all_maps = 1,
