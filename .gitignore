@@ -3,13 +3,17 @@ coc
 configstore
 fish
 fontforge
-gatsby
-gh
-github-copilot
 iterm2
 legacy
 lvim
 lvim.old
 vifm
 yarn
+
+# Tmux plugin installation (prefix + I)
 tmux/plugins
+
+# Configuration and tool-specific files
+gatsby
+github-copilot
+gh
