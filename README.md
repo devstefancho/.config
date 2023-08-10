@@ -66,3 +66,9 @@ curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Regular.ttf" https://gi
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+## HammerSpoon
+.hammerspoon 경로에 설정파일이 있어야하므로, 아래 명령어로 심볼릭 링크 생성필요
+```bash
+ln -s ~/.config/hammerspoon ~/.hammerspoon
+```
