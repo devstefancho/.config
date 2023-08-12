@@ -1,6 +1,10 @@
 # Dotfiles
+- System: MacOS Monterey 12.2.1 (21D62)
 
-- System: MacOS
+## All in one Setup
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/devstefancho/.config/main/setup.sh)"
+```
 
 ## Create Symlink for Vault
 

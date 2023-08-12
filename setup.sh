@@ -1,86 +1,105 @@
 #!/bin/bash
 
-#####################
-## CLONE REPO #######
-#####################
-# Cloning .config repository
-git clone https://github.com/devstefancho/.config.git ~/.config
-# Cloning tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+prompt_installation() {
+  local name="$1"
+  local function="$2"
+
+  echo -n "Do you want to install $1? (y/n)  "
+  read answer
+  if [ "$answer" == "y" ]; then
+    echo "Installing ${name}..."
+    eval "${function}"
+    return 0
+  else
+    echo "Skipping $1 installation..."
+  fi
+}
+
+zsh_setup() {
+  echo -n "Do you want to install oh-my-zsh? If yes, then you need to rerun this script (y/n)  "
+  read answer_for_oh_my_zsh
+  if [ "$answer_for_oh_my_zsh" == "y" ]; then
+    # Install oh-my-zsh
+    echo "Installing oh-my-zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    # Install Zsh Plugins
+    echo -n "Do you want to install zsh-autosuggestions and Powerlevel10k? (y/n)  "
+    read answer_for_zsh_plugins
+    if [ "$answer_for_zsh_plugins" == "y" ]; then
+      echo "Installing zsh-autosuggestions and Powerlevel10k..."
+      git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+      [ -d ~/.oh-my-zsh/custom/themes/powerlevel10k ] && echo "Powerlevel10k exists." || echo "Powerlevel10k does not exist."
+      # Adding custom zsh configuration and sourcing it
+      echo "source ~/.config/zsh/.zshrc" >> ~/.zshrc
+    else
+      echo "Skipping zsh plugins installation..."
+    fi
+  fi
+}
+
+clone_repo() {
+  # Cloning .config repository
+  git clone https://github.com/devstefancho/.config.git ~/.config
+  # Cloning tmux plugin manager
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
+brew_setup() {
+  # Installing Homebrew
+  export PATH=/opt/homebrew/bin:$PATH
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if command -v brew > /dev/null; then
+    echo "Homebrew version: $(brew --version)"
+  else
+    echo "Homebrew failed to install."
+    return 1
+  fi
+  read -p "Press anykey to continue..."
+  # Running Homebrew bundle
+  cd ~/.config && brew bundle
+}
+
+npm_setup() {
+  # Installing NPM packages
+  npm install -g typescript \
+    typescript-language-server \
+    cssmodules-language-server \
+    bash-language-server \
+    @fsouza/prettierd
+
+  echo -e "Npm Version: \n$(npm --version)"
+}
+
+font_setup() {
+  # Installing JetBrains Mono Nerd Fonts
+  curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Regular.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf \
+    && curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Bold.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFontMono-Bold.ttf \
+    && curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Italic.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Italic/JetBrainsMonoNerdFontMono-Italic.ttf
+
+  echo -e "JetBrains Mono Nerd Fonts: \n$(ls ~/Library/Fonts | grep JetBrainsMonoNerdFontMono)"
+}
+
+symlink_setup() {
+  echo "Symlink Setup..."
+  # Creating symlink for Vault
+  ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Documents/my-vault ~/Vault
+  # Creating symlink for Hammerspoon configuration
+  ln -s ~/.config/hammerspoon ~/.hammerspoon
+  echo -e "symlink list: \n$(ls -l ~/Vault ~/.hammerspoon)"
+}
 
 
-#####################
-## HOMEBREW SETUP ###
-#####################
-# Installing Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-if command -v brew > /dev/null; then
-  echo "Homebrew 설치 확인: $(brew --version)"
-else
-  echo "Homebrew 설치 실패"
-  exit 1
-fi
-read -p "Press anykey to continue..."
-# Running Homebrew bundle
-brew bundle
+# Main
+main() {
+  prompt_installation "Zsh" zsh_setup
+  prompt_installation "Clone Config" clone_repo
+  prompt_installation "Homebrew" brew_setup
+  prompt_installation "NPM" npm_setup
+  prompt_installation "JetBrains Mono Nerd Fonts" font_setup
+  symlink_setup
+  echo "Setup completed!!"
+}
 
-
-#####################
-## NPM SETUP ########
-#####################
-# Installing NPM packages
-npm install -g typescript \
-typescript-language-server \
-cssmodules-language-server \
-@fsouza/prettierd
-echo "NPM 설치 확인: $(npm --version)"
-
-
-#####################
-## FONT SETUP #######
-#####################
-# Installing JetBrains Mono Nerd Fonts
-curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Regular.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf \
-&& curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Bold.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFontMono-Bold.ttf \
-&& curl -fLo "$HOME/Library/Fonts/JetBrainsMonoNerdFontMono-Italic.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Italic/JetBrainsMonoNerdFontMono-Italic.ttf
-echo "JetBrains Mono Nerd Fonts 설치 확인: $(ls ~/Library/Fonts | grep JetBrainsMonoNerdFontMono)"
-
-
-#####################
-## ZSH SETUP ########
-#####################
-# Installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-if [ $? -eq 0 ]; then
-  # Installing zsh-autosuggestions plugin
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-  # Installing and configuring Powerlevel10k theme for zsh
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-else
-  echo "Error during oh-my-zsh installation."
-  exit 1
-fi
-if [ -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]; then
-  echo "Powerlevel10k 설치 확인: $(ls ~/.oh-my-zsh/custom/themes/powerlevel10k)"
-else
-  echo "Powerlevel10k 설치 실패"
-  exit 1
-fi
-
-
-####################
-## SYMLINK SETUP ###
-####################
-# Creating symlink for Vault
-ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Documents/my-vault ~/Vault
-# Creating symlink for Hammerspoon configuration
-ln -s ~/.config/hammerspoon ~/.hammerspoon
-echo "Symlink 설정 확인: \n$(ls -l Vault .hammerspoon)" 
-
-# Adding custom zsh configuration and sourcing it
-echo "source ~/.config/zsh/.zshrc" >> ~/.zshrc && source ~/.zshrc
-
-# config 설정하기: Lean, Unicode, 24-hour format, oneline, compact, few icons, concise, transient yes, Verbose
-p10k configure 
-echo "Setup completed!"
+main
