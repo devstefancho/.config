@@ -40,8 +40,16 @@ zsh_setup() {
 }
 
 clone_repo() {
-  # Cloning .config repository
-  git clone https://github.com/devstefancho/.config.git ~/.config
+  if [ -d ~/.config ]; then
+    echo "Config directory exists."
+    read -p "Do you want to remove it? (y/n)  " answer
+    if [ "$answer" == "y" ]; then
+      rm -rf ~/.config
+      git clone https://github.com/devstefancho/.config.git ~/.config
+    else
+      echo "Skipping .config directory removal..."
+    fi
+  fi
   # Cloning tmux plugin manager
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
