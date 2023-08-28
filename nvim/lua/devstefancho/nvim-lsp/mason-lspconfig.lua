@@ -41,6 +41,7 @@ function M.setup()
       "html",
       "lua_ls",
       "cssmodules_ls",
+      "bashls",
     },
   })
 
