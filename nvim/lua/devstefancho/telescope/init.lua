@@ -100,17 +100,15 @@ function M.find_by_live_grep()
 end
 
 function M.find_oldfiles()
-  local status_ok, _ = pcall(
-    builtin.oldfiles,
-    themes.get_ivy({
+  local cwd = vim.fn.getcwd()
+  -- In case of iCloud Drive, cwd_only not working
+  if string.find(cwd, "CloudDocs") then
+    builtin.oldfiles(themes.get_ivy({
+      cwd_only = false,
+    }))
+  else
+    builtin.oldfiles(themes.get_ivy({
       cwd_only = true,
-    })
-  )
-
-  if not status_ok then
-    -- builtin.oldfiles(themes.get_ivy({}))
-    telescope.extensions.frecency.frecency(themes.get_ivy({
-      workspace = "CWD",
     }))
   end
 end
