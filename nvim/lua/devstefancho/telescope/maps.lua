@@ -27,3 +27,6 @@ keymap("<leader>dl", t.show_diagnostics_error, "[d]iagnostic [l]ist")
 
 -- Project
 keymap("<leader>fp", t.find_project, "[f]ind [p]roject")
+
+-- Lsp
+keymap("gr", t.lsp_references, "lsp references")

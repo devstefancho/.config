@@ -1,6 +1,5 @@
 local M = {}
 
-local keymap = vim.keymap.set
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
@@ -267,6 +266,21 @@ function M.my_jira_commands()
       end,
     }))
     :find()
+end
+
+function M.lsp_references()
+  builtin.lsp_references({
+    sorting_strategy = "ascending",
+    layout_strategy = "vertical",
+    initial_mode = "normal",
+    layout_config = {
+      center = {
+        height = 0.95,
+        width = 0.95,
+        preview_height = 0.65,
+      },
+    },
+  })
 end
 
 return M
