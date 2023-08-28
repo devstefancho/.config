@@ -9,6 +9,7 @@ return {
       templates = {
         subdir = "templates",
       },
+      disable_frontmatter = true,
     })
 
     vim.keymap.set("n", "<M-o>", "<Cmd>ObsidianQuickSwitch<CR>", { desc = "[Obsidian] Quick Search" })
