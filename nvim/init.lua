@@ -38,3 +38,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("devstefancho.plugins")
+
+if vim.fn.has("gui_vimr") == 1 then
+  -- set vimr cwd to ~/Vault
+  vim.cmd("cd ~/Vault")
+end

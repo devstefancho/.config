@@ -5,6 +5,13 @@ end
 
 local nvim_tree_custom_mappings = require("devstefancho.nvim-tree.maps").custom_mappings
 
+local show_git = true
+local filter_dotfiles = false
+if vim.fn.has("gui_vimr") == 1 then
+  show_git = false
+  filter_dotfiles = true
+end
+
 -- Get Default Config (:h nvim-tree)
 nvim_tree.setup(
   {
@@ -80,7 +87,7 @@ nvim_tree.setup(
           file = true,
           folder = true,
           folder_arrow = true,
-          git = true,
+          git = show_git,
           modified = true,
         },
         glyphs = {
@@ -142,7 +149,7 @@ nvim_tree.setup(
       },
     },
     filters = {
-      dotfiles = false,
+      dotfiles = filter_dotfiles,
       git_clean = false,
       no_buffer = false,
       custom = {},
