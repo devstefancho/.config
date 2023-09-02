@@ -24,8 +24,8 @@ M.custom_mappings = {
   { key = "d", action = "cut", action_cb = tree_cb("cut") },
   { key = "D", action = "remove", action_cb = tree_cb("remove") },
   { key = "v", action = "vsplit", action_cb = tree_cb("vsplit") },
-  { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-  { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+  { key = "<leader>fo", action = "telescope_find_files", action_cb = telescope_find_files }, -- override find_files
+  { key = "<leader>ff", action = "telescope_live_grep", action_cb = telescope_live_grep }, -- override live_grep
 }
 
 return M
