@@ -13,6 +13,9 @@ return {
           color_icons = true,
           truncate_names = false,
           diagnostics = "nvim_lsp",
+          name_formatter = function(buf)
+            return buf.path -- show full path in bufferline
+          end,
         },
         -- fg is font-color, bg is background-color
         highlights = {
