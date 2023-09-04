@@ -269,18 +269,10 @@ function M.my_jira_commands()
 end
 
 function M.lsp_references()
-  builtin.lsp_references({
-    sorting_strategy = "ascending",
-    layout_strategy = "vertical",
+  builtin.lsp_references(themes.get_ivy({
+    show_line = false,
     initial_mode = "normal",
-    layout_config = {
-      center = {
-        height = 0.95,
-        width = 0.95,
-        preview_height = 0.65,
-      },
-    },
-  })
+  }))
 end
 
 return M
