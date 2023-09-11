@@ -9,6 +9,7 @@ lvim
 lvim.old
 vifm
 yarn
+*AWS*
 
 # Tmux plugin installation (prefix + I)
 tmux/plugins
