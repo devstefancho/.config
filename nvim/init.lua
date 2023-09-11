@@ -74,4 +74,49 @@ if vim.fn.has("gui_vimr") == 1 then
   end
 
   vim.api.nvim_command("autocmd BufWritePre *.md lua LastModified()")
+
+  function InsertTemplate()
+    local filepath = vim.fn.expand("%:p")
+    if filepath:match("daily") then
+      if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
+        local current_date = os.date("%Y-%m-%d")
+        local template = {
+          "---",
+          "id: " .. current_date,
+          "tags: daily",
+          "createdDate: " .. current_date,
+          "updatedDate: " .. current_date,
+          "---",
+          "",
+          "# " .. current_date,
+          "",
+          "- [ ]  ",
+        }
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
+
+        local lastline = vim.fn.line("$")
+        vim.api.nvim_win_set_cursor(0, { lastline - 1, 6 }) -- move cursor to the end of the line
+        vim.cmd("startinsert")
+      end
+      return
+    end
+
+    if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
+      local current_date = os.date("%Y-%m-%d")
+      local filename = vim.fn.expand("%:t:r")
+      local template = {
+        "---",
+        "id: " .. filename,
+        "tags: " .. filename,
+        "createdDate: " .. current_date,
+        "updatedDate: " .. current_date,
+        "---",
+        "",
+      }
+      vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
+      vim.cmd("startinsert")
+    end
+  end
+
+  vim.api.nvim_command("autocmd BufRead,BufEnter *.md lua InsertTemplate()")
 end
