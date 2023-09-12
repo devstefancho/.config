@@ -5,7 +5,7 @@ if not config_status then
   return
 end
 
-vim.keymap.set("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { desc = "[Nvim-Tree] [f]ile [e]xplorer" })
+vim.keymap.set("n", "<leader>e", "<CMD>NvimTreeFindFileToggle<CR>", { desc = "[Nvim-Tree] [f]ile [e]xplorer" })
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 local function telescope_find_files(_)
