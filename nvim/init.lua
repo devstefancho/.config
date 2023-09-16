@@ -80,15 +80,16 @@ if vim.fn.has("gui_vimr") == 1 then
     if filepath:match("daily") then
       if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
         local current_date = os.date("%Y-%m-%d")
+        local filename = vim.fn.expand("%:t:r")
         local template = {
           "---",
-          "id: " .. current_date,
+          "id: " .. filename, -- if use current_date then VimwikiMakeTommorowDiaryNote will use current_date, so use filename instead
           "tags: daily",
           "createdDate: " .. current_date,
           "updatedDate: " .. current_date,
           "---",
           "",
-          "# " .. current_date,
+          "# " .. filename, -- if use current_date then VimwikiMakeTommorowDiaryNote will use current_date, so use filename instead
           "",
           "- [ ]  ",
         }
