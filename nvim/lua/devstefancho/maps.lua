@@ -10,9 +10,6 @@ keymap("n", "-", "<C-x>")
 -- Esc
 keymap("i", "jk", "<ESC>")
 
--- Select all
-keymap("n", "<C-a>", "gg<S-v>G")
-
 -- New tab
 keymap("n", "te", ":tabedit<CR>", { silent = true })
 keymap("n", "ss", ":split<CR><C-w>w", { silent = true })

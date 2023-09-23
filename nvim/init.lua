@@ -120,4 +120,7 @@ if vim.fn.has("gui_vimr") == 1 then
   end
 
   vim.api.nvim_command("autocmd BufRead,BufEnter *.md lua InsertTemplate()")
+
+  -- Keymap
+  vim.keymap.set("n", "<c-a>", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Open Dashboard" })
 end
