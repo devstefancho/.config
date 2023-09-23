@@ -74,11 +74,10 @@ local buttons = {
   type = "group",
   val = {
     button("w", "  Index", "<CMD>VimwikiIndex<CR>"),
-    button("t", "  Today Diary", "<CMD>VimwikiMakeDiaryNote<CR>"),
-    button("m", "  Telescope harpoon marks", "<CMD>Telescope harpoon marks<CR>"),
-    button("e", "  Temp file", "<CMD>ene <CR><CMD>TZAtaraxis<CR>"),
-    button("SPC fr", "  Recently opened files"),
-    button("q", "  Quit", "<CMD>q<CR>"),
+    button("t", "  Today", "<CMD>VimwikiMakeDiaryNote<CR>"),
+    button("e", "  Temp", "<CMD>ene <CR><CMD>TZAtaraxis<CR>"),
+    button("m", "  Harpoon", "<CMD>Telescope harpoon marks<CR>"),
+    button("SPC fr", "  Recent"),
   },
   opts = {
     spacing = 1,
