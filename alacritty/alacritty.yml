@@ -24,6 +24,16 @@ font:
 draw_bold_text_with_bright_colors: false
 live_config_reload: true
 
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  vi_mode_style:
+    shape: Block
+    blinking: Always
+  blink_interval: 500
+  blink_timeout: 10 # stop after 10 times blinking
+
 key_bindings:
   # Remap Altkey to Metakey
   - { key: A, mods: Alt, chars: "\x1ba" }
