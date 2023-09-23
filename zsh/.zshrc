@@ -66,6 +66,9 @@ alias ob="cd /Users/stefancho/Documents/Devstefancho\'s\ Vault"
 alias ll='exa --icons -l --git'
 alias cat='bat'
 
+# Remove files
+alias rmswap='rm ~/.local/state/nvim/swap/*'
+
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
