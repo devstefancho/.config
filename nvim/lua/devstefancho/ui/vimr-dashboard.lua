@@ -73,10 +73,11 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("w", "  Index", "<CMD>VimwikiIndex<CR>"),
-    button("t", "  Today", "<CMD>VimwikiMakeDiaryNote<CR>"),
-    button("e", "  Temp", "<CMD>ene <CR><CMD>TZAtaraxis<CR>"),
-    button("m", "  Harpoon", "<CMD>Telescope harpoon marks<CR>"),
+    button("1", "  Index", "<CMD>VimwikiIndex<CR>"),
+    button("2", "  Today", "<CMD>VimwikiMakeDiaryNote<CR>"),
+    button("3", "  Tomorrow", "<CMD>VimwikiMakeTomorrowDiaryNote<CR>"),
+    button("4", "  Temp", "<CMD>ene <CR><CMD>TZAtaraxis<CR>"),
+    button("5", "  Harpoon", "<CMD>Telescope harpoon marks<CR>"),
     button("SPC fr", "  Recent"),
   },
   opts = {
