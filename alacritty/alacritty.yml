@@ -38,6 +38,7 @@ key_bindings:
   # Remap Altkey to Metakey
   - { key: A, mods: Alt, chars: "\x1ba" }
   - { key: O, mods: Alt, chars: "\x1bo" }
+  - { key: Z, mods: Alt, chars: "\x1bz" }
   - { key: LBracket, mods: Alt, chars: "\x1b[" }
   - { key: RBracket, mods: Alt, chars: "\x1b]" }
   # =======================
