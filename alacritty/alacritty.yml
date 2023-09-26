@@ -19,7 +19,7 @@ font:
   italic:
     family: JetBrainsMono Nerd Font Mono
     style: Italic
-  size: 16
+  size: 13
 
 draw_bold_text_with_bright_colors: false
 live_config_reload: true
