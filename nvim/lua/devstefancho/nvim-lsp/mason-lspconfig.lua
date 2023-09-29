@@ -42,6 +42,7 @@ function M.setup()
       "lua_ls",
       "cssmodules_ls",
       "bashls",
+      "rust_analyzer",
     },
   })
 

@@ -20,6 +20,7 @@ return {
           "html",
           "graphql",
           "yaml",
+          "rust",
         },
         sync_install = false,
         auto_install = true,
