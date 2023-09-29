@@ -11,7 +11,7 @@ return {
 
       require("bufferline").setup({
         options = {
-          mode = "buffers",
+          mode = "tabs",
           separator_style = "thin",
           show_close_icon = false,
           show_buffer_close_icons = false,
