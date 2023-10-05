@@ -1,6 +1,8 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
+    local mocha = require("catppuccin.palettes").get_palette("mocha")
+
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -13,8 +15,14 @@ return {
       },
       sections = {
         lualine_a = {
-          -- "mode",
-          "buffers",
+          {
+            "buffers",
+            mode = 4, -- buffer number and name
+            buffers_color = {
+              active = { gui = "bold", bg = "#181825", fg = mocha.rosewater }, -- copy bg color from :hi lualine_c_inactive
+              inactive = "lualine_c_inactive",
+            },
+          },
         },
         lualine_b = {
           -- "branch"
