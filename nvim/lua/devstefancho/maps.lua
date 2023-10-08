@@ -16,20 +16,16 @@ keymap("n", "ss", ":split<CR><C-w>w", { silent = true })
 keymap("n", "sv", ":vsplit<CR><C-w>w", { silent = true })
 
 -- Move window
-keymap("", "s<left>", "<C-w>h")
-keymap("", "s<up>", "<C-w>k")
-keymap("", "s<down>", "<C-w>j")
-keymap("", "s<right>", "<C-w>l")
-keymap("", "<leader>h", "<C-w>h")
-keymap("", "<leader>k", "<C-w>k")
-keymap("", "<leader>j", "<C-w>j")
-keymap("", "<leader>l", "<C-w>l")
+keymap("", "<left>", "<C-w>h")
+keymap("", "<up>", "<C-w>k")
+keymap("", "<down>", "<C-w>j")
+keymap("", "<right>", "<C-w>l")
 
 -- Resize window
-keymap("n", "<left>", ":vertical resize -2<CR>") -- increase
-keymap("n", "<right>", ":vertical resize +2<CR>") -- decrease
-keymap("n", "<up>", ":resize +2<CR>") -- increase
-keymap("n", "<down>", ":resize -2<CR>") -- decrease
+keymap("n", "<leader>h", ":vertical resize -10<CR>") -- increase
+keymap("n", "<leader>l", ":vertical resize +10<CR>") -- decrease
+keymap("n", "<leader>j", ":resize +10<CR>") -- increase
+keymap("n", "<leader>k", ":resize -10<CR>") -- decrease
 
 -- HightLighting
 keymap("n", "<leader>n", ":noh<CR>")
