@@ -17,17 +17,6 @@ local on_attach_keymaps = function()
   keymap("<leader>r", vim.lsp.buf.rename, "[r]ename", opts) -- same as
 end
 
-local enable_format_on_save = function(_, bufnr)
-  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup_format,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end,
-  })
-end
-
 -- Filtering table
 local filter = function(arr, fn)
   if type(arr) ~= "table" then
@@ -65,20 +54,7 @@ M.tsserver_handlers = {
   end,
 }
 
--- For Typescript Server
-function M.tsserver_on_attach(client, bufnr)
-  -- See {https://github.com/typescript-language-server/typescript-language-server/issues/216}
-  on_attach_keymaps()
-  enable_format_on_save(client, bufnr)
-end
-
-function M.lua_on_attach(client, bufnr)
-  -- See {https://github.com/typescript-language-server/typescript-language-server/issues/216}
-  on_attach_keymaps()
-  enable_format_on_save(client, bufnr)
-end
-
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
   on_attach_keymaps()
 end
 

@@ -62,19 +62,12 @@ function M.setup()
         disable_commands = false,
         debug = false,
         server = {
-          on_attach = f.tsserver_on_attach,
+          on_attach = f.on_attach,
           capabilities = capabilities,
           handlers = f.tsserver_handlers,
           filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
           cmd = { "typescript-language-server", "--stdio" },
         },
-      })
-    end,
-    ["lua_ls"] = function()
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        on_attach = f.lua_on_attach,
-        settings = servers.lua_ls,
       })
     end,
   })
