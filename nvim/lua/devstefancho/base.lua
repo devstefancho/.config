@@ -6,6 +6,12 @@ vim.opt.fileencoding = "utf-8"
 
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.cmd([[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+  set nofoldenable
+  set foldcolumn=1
+]])
 
 vim.opt.autoindent = true
 vim.opt.title = true
