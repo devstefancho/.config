@@ -43,6 +43,7 @@ function M.setup()
       "cssmodules_ls",
       "bashls",
       "rust_analyzer",
+      "marksman",
     },
   })
 
