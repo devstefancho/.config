@@ -3,7 +3,7 @@ local M = {}
 local keymap = require("devstefancho.utils").createKeymap("Lsp")
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
--- Default Keymaps for LSP
+-- [[ LSP ]]
 local on_attach_keymaps = function()
   local opts = { buffer = 0 }
 
@@ -12,9 +12,15 @@ local on_attach_keymaps = function()
   keymap("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration", opts)
   keymap("gd", vim.lsp.buf.definition, "[g]o to [d]efinition", opts)
   keymap("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation", opts)
-
   keymap("gK", vim.lsp.buf.signature_help, { desc = "Signature Help Documentation" })
   keymap("<leader>r", vim.lsp.buf.rename, "[r]ename", opts) -- same as
+  keymap("K", vim.lsp.buf.hover, opts)
+  keymap("<leader>do", vim.diagnostic.open_float, opts)
+  keymap("]d", vim.diagnostic.goto_next, opts)
+  keymap("[d", vim.diagnostic.goto_prev, opts)
+  keymap("<leader>wks", vim.lsp.buf.workspace_symbol, opts)
+  vim.keymap.set("i", "<C-m>", vim.lsp.buf.signature_help, opts)
+  -- keymap("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 end
 
 -- Filtering table
@@ -56,6 +62,26 @@ M.tsserver_handlers = {
 
 function M.on_attach(client, bufnr)
   on_attach_keymaps()
+end
+
+-- [[ Diagnostics ]]
+vim.diagnostic.config({
+  virtual_text = { severity = "WARN" },
+  underline = { severity = "WARN" },
+  signs = true,
+})
+
+local signs = {
+  { name = "DiagnosticSignWarn", text = "W" },
+  { name = "DiagnosticSignError", text = "E" },
+  { name = "DiagnosticSignHint", text = "H" },
+  { name = "DiagnosticSignInfo", text = "I" },
+}
+
+for _, sign in ipairs(signs) do
+  local name = sign.name
+  local text = sign.text
+  vim.fn.sign_define(name, { text = text, texthl = name, numhl = name })
 end
 
 return M

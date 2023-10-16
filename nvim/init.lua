@@ -5,7 +5,6 @@ require("devstefancho.base")
 require("devstefancho.highlights")
 require("devstefancho.maps")
 require("devstefancho.plugins")
-require("devstefancho.diagnostics")
 require("devstefancho.commands")
 require("devstefancho.vimr").setup()
 
