@@ -1,21 +1,17 @@
--- AutoCompletion (https://github.com/hrsh7th/nvim-cmp)
-local status, cmp = pcall(require, "cmp")
-if not status then
-  return
-end
+local cmp = require("cmp")
 
 local source_names = {
-  nvim_lsp = "(LSP)",
-  emoji = "(Emoji)",
-  path = "(Path)",
-  calc = "(Calc)",
-  cmp_tabnine = "(Tabnine)",
-  vsnip = "(Snippet)",
-  luasnip = "(Snippet)",
-  buffer = "(Buffer)",
-  tmux = "(TMUX)",
-  copilot = "(Copilot)",
-  treesitter = "(TreeSitter)",
+  nvim_lsp = "[LSP]",
+  emoji = "[Emoji]",
+  path = "[Path]",
+  calc = "[Calc]",
+  cmp_tabnine = "[Tabnine]",
+  vsnip = "[Snippet]",
+  luasnip = "[Snippet]",
+  buffer = "[Buffer]",
+  tmux = "[TMUX]",
+  copilot = "[Copilot]",
+  treesitter = "[TreeSitter]",
 }
 
 local duplicates_default = 0
@@ -37,8 +33,6 @@ local has_words_before = function()
 end
 
 cmp.setup({
-  -- snippet은 자동완성에서 confirm에서 오류가 발생하지 않으려면 필요함
-  -- Error: snippet engine is not configured (https://github.com/hrsh7th/nvim-cmp/issues/373)
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
@@ -49,11 +43,7 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({
-      -- this is the important line
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = vim.schedule_wrap(function(fallback)
       if cmp.visible() and has_words_before() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -70,9 +60,11 @@ cmp.setup({
     end),
   }),
   sources = cmp.config.sources({
-    { name = "copilot", group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "buffer", group_index = 2 },
+    { name = "luasnip" },
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "path" },
+    { name = "buffer" },
   }),
   window = {
     completion = cmp.config.window.bordered(),

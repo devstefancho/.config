@@ -1,7 +1,7 @@
 return {
   {
     "jackMort/ChatGPT.nvim",
-    cond = false,
+    cond = require("devstefancho.plugins_status").plugins_status["chatgpt"],
     config = function()
       require("chatgpt").setup({
         welcome_message = WELCOME_MESSAGE,

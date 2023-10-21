@@ -1,5 +1,5 @@
 return {
   -- Emmet
   "mattn/emmet-vim",
-  cond = false,
+  cond = require("devstefancho.plugins_status").plugins_status["emmet"],
 }

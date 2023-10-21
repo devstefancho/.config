@@ -12,4 +12,5 @@ return {
     -- default configuration {https://github.com/utilyre/barbecue.nvim#-configuration}
     show_dirname = false,
   },
+  cond = require("devstefancho.plugins_status").plugins_status["barbecue"],
 }

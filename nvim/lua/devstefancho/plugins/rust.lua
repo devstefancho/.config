@@ -4,4 +4,5 @@ return {
     -- setup rust formatter {https://github.com/rust-lang/rust.vim#formatting-with-rustfmt}
     vim.g.rustfmt_autosave = 1
   end,
+  cond = require("devstefancho.plugins_status").plugins_status["rust"],
 }

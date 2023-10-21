@@ -9,5 +9,6 @@ return {
       require("devstefancho.nvim-tree.setup")
       require("devstefancho.nvim-tree.maps")
     end,
+    cond = require("devstefancho.plugins_status").plugins_status["nvim-tree"],
   },
 }

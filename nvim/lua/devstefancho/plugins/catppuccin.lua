@@ -5,4 +5,5 @@ return {
   config = function()
     vim.cmd("colorscheme catppuccin")
   end,
+  cond = require("devstefancho.plugins_status").plugins_status["catppuccin"],
 }

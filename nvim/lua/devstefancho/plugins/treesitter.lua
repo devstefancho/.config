@@ -91,6 +91,7 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context",
     },
+    cond = require("devstefancho.plugins_status").plugins_status["treesitter"],
   },
   "nvim-treesitter/playground",
 }

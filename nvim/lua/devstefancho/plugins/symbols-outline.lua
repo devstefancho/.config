@@ -65,4 +65,5 @@ return {
       },
     })
   end,
+  cond = require("devstefancho.plugins_status").plugins_status["symbols-outline"],
 }

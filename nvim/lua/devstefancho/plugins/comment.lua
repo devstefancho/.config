@@ -1,4 +1,9 @@
 return {
-  "numToStr/Comment.nvim",
-  "JoosepAlviste/nvim-ts-context-commentstring",
+  {
+    "numToStr/Comment.nvim",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    cond = require("devstefancho.plugins_status").plugins_status["comment"],
+  },
 }

@@ -38,5 +38,6 @@ return {
       keymap("<leader>w,", "<Cmd>VimwikiDiaryPrevDay<CR>", "prev day diary")
       keymap("<leader>w.", "<Cmd>VimwikiDiaryNextDay<CR>", "next day diary")
     end,
+    cond = require("devstefancho.plugins_status").plugins_status["vimwiki"],
   },
 }

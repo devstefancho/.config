@@ -1,16 +1,4 @@
 return {
-  -- Auto Completion
-  "hrsh7th/cmp-buffer", -- Nvim-cmp source for buffer words
-  "hrsh7th/cmp-nvim-lsp", -- Nvim-cmp source for neovim's built-in LSP
-  "hrsh7th/nvim-cmp", -- Completion
-  {
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "1.*",
-    -- install jsregexp (optional!).
-    build = "make install_jsregexp",
-  },
-
   -- Copilot
   {
     "github/copilot.vim",
@@ -28,6 +16,7 @@ return {
       ]]) -- disable copilot for leetcode
     end,
   },
+
   -- {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",

@@ -1,6 +1,7 @@
 return {
   {
     "ThePrimeagen/harpoon",
+    cond = require("devstefancho.plugins_status").plugins_status["harpoon"],
     dependencies = {
       "nvim-lua/plenary.nvim",
     },

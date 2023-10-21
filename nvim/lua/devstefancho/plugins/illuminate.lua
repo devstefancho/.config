@@ -51,5 +51,6 @@ return {
         min_count_to_highlight = 1,
       })
     end,
+    cond = require("devstefancho.plugins_status").plugins_status["illuminate"],
   },
 }

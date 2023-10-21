@@ -13,4 +13,5 @@ return {
     })
   end,
   lazy = false,
+  cond = require("devstefancho.plugins_status").plugins_status["obsidian"],
 }
