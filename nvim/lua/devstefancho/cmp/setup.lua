@@ -1,17 +1,11 @@
 local cmp = require("cmp")
 
 local source_names = {
-  nvim_lsp = "[LSP]",
-  emoji = "[Emoji]",
-  path = "[Path]",
-  calc = "[Calc]",
-  cmp_tabnine = "[Tabnine]",
-  vsnip = "[Snippet]",
-  luasnip = "[Snippet]",
-  buffer = "[Buffer]",
-  tmux = "[TMUX]",
+  luasnip = "[snip]",
   copilot = "[Copilot]",
-  treesitter = "[TreeSitter]",
+  nvim_lsp = "[lsp]",
+  path = "[path]",
+  buffer = "[buf]",
 }
 
 local duplicates_default = 0
@@ -64,7 +58,7 @@ cmp.setup({
     { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "path" },
-    { name = "buffer" },
+    { name = "buffer", keyword_length = 5 },
   }),
   window = {
     completion = cmp.config.window.bordered(),
