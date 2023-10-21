@@ -19,7 +19,7 @@ local on_attach_keymaps = function()
   keymap("]d", vim.diagnostic.goto_next, opts)
   keymap("[d", vim.diagnostic.goto_prev, opts)
   keymap("<leader>wks", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("i", "<C-m>", vim.lsp.buf.signature_help, opts)
+  -- vim.keymap.set("i", "<C-m>", vim.lsp.buf.signature_help, opts)
   -- keymap("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 end
 
@@ -66,7 +66,7 @@ end
 
 -- [[ Diagnostics ]]
 vim.diagnostic.config({
-  virtual_text = { severity = "WARN" },
+  virtual_text = { severity = "ERROR" },
   underline = { severity = "WARN" },
   signs = true,
 })
