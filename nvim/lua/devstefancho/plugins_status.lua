@@ -2,6 +2,8 @@ local M = {}
 
 M.plugins_status = {
   ["alpha-nvim"] = true,
+  ["autotags"] = true,
+  ["autopairs"] = true,
   ["auto-pairs"] = true,
   ["barbecue"] = true,
   ["bufferline"] = true,
