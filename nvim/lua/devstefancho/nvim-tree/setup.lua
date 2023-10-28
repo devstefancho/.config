@@ -129,7 +129,7 @@ nvim_tree.setup(
       ignore_list = {},
     },
     system_open = {
-      cmd = "idea", -- open in intellj
+      cmd = "",
       args = {},
     },
     diagnostics = {
