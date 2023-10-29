@@ -15,23 +15,23 @@ return {
       },
       sections = {
         lualine_a = {
-          {
-            "buffers",
-            mode = 4, -- buffer number and name
-            buffers_color = {
-              active = { gui = "bold", bg = "#181825", fg = mocha.rosewater }, -- copy bg color from :hi lualine_c_inactive
-              inactive = "lualine_c_inactive",
-            },
-          },
+          -- {
+          --   "buffers",
+          --   mode = 4, -- buffer number and name
+          --   buffers_color = {
+          --     active = { gui = "bold", bg = "#181825", fg = mocha.rosewater }, -- copy bg color from :hi lualine_c_inactive
+          --     inactive = "lualine_c_inactive",
+          --   },
+          -- },
         },
         lualine_b = {
-          -- "branch"
+          "branch",
         },
         lualine_c = {
           {
-            -- "filename",
-            -- file_status = true, -- displays file status (readonly status, modified status)
-            -- path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+            "filename",
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
           },
         },
         lualine_x = {
@@ -47,20 +47,20 @@ return {
           -- "progress"
         },
         lualine_z = {
-          -- "location"
+          "location",
         },
       },
       inactive_sections = {
         -- lualine_a = {},
         -- lualine_b = {},
-        -- lualine_c = {
-        --   {
-        --     "filename",
-        --     file_status = true, -- displays file status (readonly status, modified status)
-        --     path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-        --   },
-        -- },
-        -- lualine_x = { "location" },
+        lualine_c = {
+          {
+            "filename",
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+          },
+        },
+        lualine_x = { "location" },
         -- lualine_y = {},
         -- lualine_z = {},
       },
