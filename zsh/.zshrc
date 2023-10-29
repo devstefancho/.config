@@ -89,3 +89,8 @@ export PATH="$(yarn global bin):$PATH"
 
 # zsh vim mode on
 # set -o vi
+
+## brew install zoxide
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias zz='z -'
