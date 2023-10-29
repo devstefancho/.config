@@ -30,3 +30,7 @@ keymap("<leader>fp", t.find_project, "[f]ind [p]roject")
 
 -- Lsp
 keymap("gr", t.lsp_references, "lsp references")
+
+-- Custom
+local c = require("devstefancho.telescope.custom")
+keymap("<leader>fB", c.search_open_buffers, "find in buffers")
