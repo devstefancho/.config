@@ -275,4 +275,22 @@ function M.lsp_references()
   }))
 end
 
+function M.live_grep_buffers()
+  builtin.live_grep({
+    prompt_title = "Live Grep In Buffers",
+    grep_open_files = true,
+    layout_strategy = "vertical",
+    prompt_position = "top",
+    sorting_strategy = "ascending",
+    layout_config = {
+      vertical = {
+        width = 0.8,
+        height = 0.8,
+        preview_height = 0.4,
+        mirror = true,
+      },
+    },
+  })
+end
+
 return M
