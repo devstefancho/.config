@@ -10,7 +10,6 @@ return {
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
       -- install jsregexp (optional!).
       build = "make install_jsregexp",
-      dependencies = { "rafamadriz/friendly-snippets" },
       config = function()
         local ls = require("luasnip")
 
@@ -38,6 +37,9 @@ return {
         vim.keymap.set({ "i", "s" }, "<M-l>", jump_forward, { silent = true })
         vim.keymap.set({ "i", "s" }, "<M-h>", jump_back, { silent = true })
         vim.keymap.set({ "i", "s" }, "<M-e>", change_choice, { silent = true })
+
+        -- import snippets
+        require("devstefancho.snips.typescript")
       end,
     },
     "saadparwaiz1/cmp_luasnip",
