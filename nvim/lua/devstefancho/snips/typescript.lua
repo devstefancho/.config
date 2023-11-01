@@ -12,7 +12,7 @@ local get_filename = function()
 end
 
 local component = s(
-  "rfc",
+  "raf",
   fmt(
     [[
 import {{ FC }} from 'react';
