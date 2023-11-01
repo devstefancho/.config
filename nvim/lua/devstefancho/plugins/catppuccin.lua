@@ -7,6 +7,7 @@ return {
       custom_highlights = function(colors)
         return {
           Visual = { bg = "#2d59a1" },
+          CursorLineNr = { fg = colors.yellow },
         }
       end,
     })
