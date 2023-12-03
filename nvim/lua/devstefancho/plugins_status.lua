@@ -18,6 +18,7 @@ M.plugins_status = {
   ["gitsigns"] = true,
   ["git-worktree"] = true,
   ["harpoon"] = true,
+  ["indent-blankline"] = true,
   ["illuminate"] = true,
   ["jsdoc"] = true,
   ["lsp"] = true,
