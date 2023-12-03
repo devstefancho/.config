@@ -7,7 +7,6 @@ hs.keycodes.inputSourceChanged(fn.IM_alert)
 -- Application Example: Obsidian, CodeSandbox, iTerm, Visual Studio Code
 fn.hotkeyBindApp({ "alt" }, "1", "Alacritty")
 fn.hotkeyBindApp({ "alt" }, "2", "Google Chrome")
-fn.hotkeyBindApp({ "alt" }, "3", "VimR")
 
 -- [[ Remapper ]]
 local FRemap = hs.loadSpoon("foundation_remapping")
