@@ -24,7 +24,15 @@ return {
       }
       vim.g.vimwiki_list = {
         {
-          path = "~/Vault/",
+          path = "/Users/stefancho/Documents/work-wiki/",
+          syntax = "markdown",
+          ext = ".md",
+          diary_rel_path = "daily/",
+          diary_index = "__index",
+          auto_diary_index = 1,
+        },
+        {
+          path = "/Users/stefancho/Documents/open-wiki//",
           syntax = "markdown",
           ext = ".md",
           diary_rel_path = "daily/",

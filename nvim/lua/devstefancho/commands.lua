@@ -30,3 +30,21 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   desc = "load view (folds), when opening file",
   command = "silent! loadview",
 })
+
+-- Vimwiki
+local vimwiki = require("devstefancho.vimwiki")
+if vimwiki.is_current_path_wiki() then
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.md",
+    callback = function()
+      vimwiki.last_modified_date()
+    end,
+  })
+
+  vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
+    pattern = "*.md",
+    callback = function()
+      vimwiki.insert_template()
+    end,
+  })
+end

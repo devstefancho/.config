@@ -6,7 +6,6 @@ require("devstefancho.highlights")
 require("devstefancho.maps")
 require("devstefancho.plugins")
 require("devstefancho.commands")
-require("devstefancho.vimr").setup()
 
 -- Copy to Clipboard
 local has = function(x)

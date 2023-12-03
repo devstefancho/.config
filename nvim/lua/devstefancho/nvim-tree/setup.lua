@@ -7,7 +7,8 @@ local nvim_tree_custom_mappings = require("devstefancho.nvim-tree.maps").custom_
 
 local show_git = true
 local filter_dotfiles = false
-if vim.fn.has("gui_vimr") == 1 then
+local vimwiki = require("devstefancho.vimwiki")
+if vimwiki.is_current_path_wiki() then
   show_git = false
   filter_dotfiles = true
 end
