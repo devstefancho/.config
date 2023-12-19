@@ -35,7 +35,7 @@ return {
         local opts = { buffer = 0 }
         local node_server = Terminal:new({
           hidden = true,
-          count = 5,
+          count = 6,
           direction = "float",
           on_open = function(term)
             keymap("t", "<esc>", function()
