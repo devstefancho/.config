@@ -74,7 +74,8 @@ cmp.setup({
     format = function(entry, vim_item)
       -- See :help complete-items
       vim_item.menu = source_names[entry.source.name]
-      vim_item.kind = require("devstefancho.icons").kind[vim_item.kind]
+      local kind = require("devstefancho.icons").kind[vim_item.kind] or vim_item.kind
+      vim_item.kind = kind
       vim_item.dup = duplicates[entry.source.name] or duplicates_default
       return vim_item
     end,
