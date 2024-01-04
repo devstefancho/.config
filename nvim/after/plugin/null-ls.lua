@@ -30,6 +30,7 @@ null_ls.setup({
         "scss",
         "html",
         "json",
+        "astro",
         "yaml",
         "lua",
         "graphql",

@@ -44,6 +44,7 @@ function M.setup()
       "bashls",
       "rust_analyzer",
       "marksman",
+      "astro", -- install astro lsp with npm install -g @astrojs/language-server (https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#astro)
     },
   })
 
