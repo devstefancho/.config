@@ -87,3 +87,6 @@ multiplier = 10
 [window.padding]
 x = 2
 y = 2
+
+[window]
+option_as_alt = "Both"
