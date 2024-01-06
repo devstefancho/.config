@@ -94,3 +94,6 @@ export PATH="$(yarn global bin):$PATH"
 eval "$(zoxide init zsh)"
 alias cd='z'
 alias zz='z -'
+
+# XDG path for lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
