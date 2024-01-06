@@ -9,6 +9,7 @@ return {
       vim.g.vimwiki_autowriteall = 0
       vim.g.vimwiki_listsym_rejected = "-"
       vim.g.vimwiki_listsyms = " .oOX"
+      vim.g.vimwiki_conceallevel = 0
 
       vim.g.vimwiki_key_mappings = {
         all_maps = 1,
