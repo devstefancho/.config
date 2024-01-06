@@ -1,6 +1,6 @@
 gui:
   # stuff relating to the UI
-  windowSize: "normal" # one of 'normal' | 'half' | 'full' default is 'normal'
+  windowSize: "half" # one of 'normal' | 'half' | 'full' default is 'normal'
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   scrollOffMargin: 2 # how many lines to keep before/after the cursor when it reaches the top/bottom of the view; see 'Scroll-off Margin' section below
@@ -8,7 +8,7 @@ gui:
   sidePanelWidth: 0.3333 # number from 0 to 1
   expandFocusedSidePanel: false
   mainPanelSplitMode: "flexible" # one of 'horizontal' | 'flexible' | 'vertical'
-  language: "auto" # one of 'auto' | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
+  language: "en" # one of 'auto' | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
   timeFormat: "02 Jan 06" # https://pkg.go.dev/time#Time.Format
   shortTimeFormat: "3:04PM"
   theme:
@@ -109,11 +109,11 @@ notARepository: "prompt" # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
 keybinding:
   universal:
-    quit: "q"
+    quit: "<esc>"
     quit-alt1: "<c-c>" # alternative/alias of quit
-    return: "<esc>" # return to previous menu, will quit if there's nowhere to return
+    return: "h" # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory: "Q"
-    togglePanel: "<tab>" # goto the next panel
+    togglePanel: "" # goto the next panel
     prevItem: "<up>" # go one line up
     nextItem: "<down>" # go one line down
     prevItem-alt: "k" # go one line up
@@ -126,15 +126,15 @@ keybinding:
     scrollRight: "L" # scroll right within list view
     prevBlock: "<left>" # goto the previous block / panel
     nextBlock: "<right>" # goto the next block / panel
-    prevBlock-alt: "h" # goto the previous block / panel
-    nextBlock-alt: "l" # goto the next block / panel
+    prevBlock-alt: "" # goto the previous block / panel
+    nextBlock-alt: "" # goto the next block / panel
     jumpToBlock: ["1", "2", "3", "4", "5"] # goto the Nth block / panel
     nextMatch: "n"
     prevMatch: "N"
     # optionMenu: <disabled> # show help menu
     optionMenu-alt1: "?" # show help menu
-    select: "<space>"
-    goInto: "<enter>"
+    select: "-" # same keymap with vim fugitive
+    goInto: "l"
     openRecentRepos: "<c-r>"
     confirm: "<enter>"
     remove: "d"
