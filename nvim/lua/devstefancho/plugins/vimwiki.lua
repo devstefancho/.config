@@ -46,6 +46,8 @@ return {
       local keymap = require("devstefancho.utils").createKeymap("Vimwiki")
       keymap("<leader>w,", "<Cmd>VimwikiDiaryPrevDay<CR>", "prev day diary")
       keymap("<leader>w.", "<Cmd>VimwikiDiaryNextDay<CR>", "next day diary")
+      keymap("<leader><leader>", "<Cmd>VimwikiToggleListItem<CR>", "toggle list item")
+      keymap("gl", "<Cmd>VimwikiRemoveCBInList<CR>", "remove checkbox in list")
     end,
     cond = require("devstefancho.plugins_status").plugins_status["vimwiki"],
   },

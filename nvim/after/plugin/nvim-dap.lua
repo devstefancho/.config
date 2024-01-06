@@ -78,14 +78,14 @@ require("telescope").load_extension("dap")
 
 local keymap = require("devstefancho.utils").createKeymap("Dap")
 
-keymap("<leader><leader>db", dap.step_back, "step_back")
-keymap("<leader><leader>di", dap.step_into, "step_into")
-keymap("<leader><leader>do", dap.step_over, "step_over")
-keymap("<leader><leader>du", dap.step_out, "step_out")
-keymap("<leader><leader>dc", dap.continue, "continue")
-keymap("<leader><leader>dd", dap.disconnect, "disconnect")
-keymap("<leader><leader>dr", dap.repl.open)
-keymap("<leader><leader>dt", dap.toggle_breakpoint)
+-- keymap("<leader><leader>db", dap.step_back, "step_back")
+-- keymap("<leader><leader>di", dap.step_into, "step_into")
+-- keymap("<leader><leader>do", dap.step_over, "step_over")
+-- keymap("<leader><leader>du", dap.step_out, "step_out")
+-- keymap("<leader><leader>dc", dap.continue, "continue")
+-- keymap("<leader><leader>dd", dap.disconnect, "disconnect")
+-- keymap("<leader><leader>dr", dap.repl.open)
+-- keymap("<leader><leader>dt", dap.toggle_breakpoint)
 
 -- See https://github.com/mxsdev/nvim-dap-vscode-js#installation
 require("dap-vscode-js").setup({
