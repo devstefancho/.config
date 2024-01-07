@@ -43,6 +43,11 @@ return {
       }
     end,
     config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "vimwiki",
+        command = "setlocal colorcolumn=100",
+      })
+
       local keymap = require("devstefancho.utils").createKeymap("Vimwiki")
       keymap("<leader>w,", "<Cmd>VimwikiDiaryPrevDay<CR>", "prev day diary")
       keymap("<leader>w.", "<Cmd>VimwikiDiaryNextDay<CR>", "next day diary")
