@@ -21,12 +21,6 @@ keymap("", "<up>", "<C-w>k")
 keymap("", "<down>", "<C-w>j")
 keymap("", "<right>", "<C-w>l")
 
--- Resize window
-keymap("n", "<leader>h", ":vertical resize -10<CR>") -- increase
-keymap("n", "<leader>l", ":vertical resize +10<CR>") -- decrease
-keymap("n", "<leader>j", ":resize +10<CR>") -- increase
-keymap("n", "<leader>k", ":resize -10<CR>") -- decrease
-
 -- HightLighting
 keymap("n", "<leader>n", ":noh<CR>")
 
