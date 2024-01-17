@@ -38,48 +38,80 @@ function M.last_modified_date()
   end
 end
 
+local function get_open_wiki_template(filename, current_date)
+  return {
+    "---",
+    "id: " .. filename,
+    "tags: daily",
+    "createdDate: " .. current_date,
+    "updatedDate: " .. current_date,
+    "---",
+    "",
+    "# " .. filename,
+    "",
+    "[[personal-todo]]",
+    "",
+    "- [ ]  ",
+  }
+end
+
+local function get_work_wiki_template(filename, current_date)
+  return {
+    "---",
+    "id: " .. filename,
+    "tags: private-daily",
+    "createdDate: " .. current_date,
+    "updatedDate: " .. current_date,
+    "---",
+    "",
+    "# " .. filename,
+    "",
+    "- [ ]  ",
+  }
+end
+
+local function get_default_template(filename, current_date)
+  return {
+    "---",
+    "id: " .. filename,
+    "slug: " .. filename,
+    "tags: " .. filename,
+    "createdDate: " .. current_date,
+    "updatedDate: " .. current_date,
+    "---",
+    "",
+    "# " .. filename,
+    "",
+    "",
+  }
+end
+
 function M.insert_template()
   local filepath = vim.fn.expand("%:p")
-  if filepath:match("daily") then
-    if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
-      local current_date = os.date("%Y-%m-%d")
-      local filename = vim.fn.expand("%:t:r")
-      local template = {
-        "---",
-        "id: " .. filename, -- if use current_date then VimwikiMakeTommorowDiaryNote will use current_date, so use filename instead
-        "tags: daily",
-        "createdDate: " .. current_date,
-        "updatedDate: " .. current_date,
-        "---",
-        "",
-        "# " .. filename, -- if use current_date then VimwikiMakeTommorowDiaryNote will use current_date, so use filename instead
-        "",
-        "- [ ]  ",
-      }
-      vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
+  local filename = vim.fn.expand("%:t:r")
+  local current_date = os.date("%Y-%m-%d")
+  local is_empty_first_line = vim.fn.line("$") == 1 and vim.fn.getline(1) == ""
+  local is_dir_private_daily = filepath:match("work%-wiki%/daily")
+  local is_dir_public_daily = filepath:match("open%-wiki%/daily")
 
-      local lastline = vim.fn.line("$")
-      vim.api.nvim_win_set_cursor(0, { lastline - 1, 6 }) -- move cursor to the end of the line
-      vim.cmd("startinsert")
-    end
+  if not is_empty_first_line then
+    print("can not add template because file is not emtpy")
     return
   end
 
-  if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
-    local current_date = os.date("%Y-%m-%d")
-    local filename = vim.fn.expand("%:t:r")
-    local template = {
-      "---",
-      "id: " .. filename,
-      "tags: " .. filename,
-      "createdDate: " .. current_date,
-      "updatedDate: " .. current_date,
-      "---",
-      "",
-    }
-    vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
-    vim.cmd("startinsert")
+  local template = {}
+  if is_dir_public_daily then
+    template = get_open_wiki_template(filename, current_date)
+  elseif is_dir_private_daily then
+    template = get_work_wiki_template(filename, current_date)
+  else
+    template = get_default_template(filename, current_date)
   end
+
+  vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
+  local lastline = vim.fn.line("$")
+  vim.api.nvim_win_set_cursor(0, { lastline - 1, 6 }) -- move cursor to the end of the line
+  vim.cmd("startinsert")
 end
 
 return M
