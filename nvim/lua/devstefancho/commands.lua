@@ -47,4 +47,11 @@ if vimwiki.is_current_path_wiki() then
       vimwiki.insert_template()
     end,
   })
+
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "vimwiki",
+    callback = function()
+      vim.cmd([[setlocal colorcolumn=100]])
+    end,
+  })
 end

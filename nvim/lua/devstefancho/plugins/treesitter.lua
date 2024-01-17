@@ -42,10 +42,10 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<c-space>",
-          node_incremental = "<c-space>",
-          scope_incremental = "<c-s>",
-          node_decremental = "grm",
+          -- init_selection = "<c-space>",
+          -- node_incremental = "<c-space>",
+          -- scope_incremental = "<c-s>",
+          -- node_decremental = "grm",
         },
       },
       -- reference from {https://github.com/omerxx/dotfiles/blob/master/nvim/lua/plugins/treesitter.lua}
