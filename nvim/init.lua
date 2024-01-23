@@ -38,3 +38,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("devstefancho.plugins")
+
+vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi NvimTreeNormal guibg=NONE ctermbg=NONE
+]])

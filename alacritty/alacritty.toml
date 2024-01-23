@@ -90,3 +90,4 @@ y = 2
 
 [window]
 option_as_alt = "Both"
+opacity = 0.85
