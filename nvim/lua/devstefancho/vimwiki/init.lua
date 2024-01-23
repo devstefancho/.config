@@ -51,11 +51,16 @@ local function get_open_wiki_template(filename, current_date)
     "",
     "[[personal-todo]]",
     "",
+    "## Task",
     "- [ ]  ",
+    "",
+    "## Doc",
+    "- [ ] ",
+    "",
   }
 end
 
-local function get_work_wiki_template(filename, current_date)
+local function work_wiki_daily_template(filename, current_date)
   return {
     "---",
     "id: " .. filename,
@@ -70,22 +75,6 @@ local function get_work_wiki_template(filename, current_date)
   }
 end
 
-local function get_default_template(filename, current_date)
-  return {
-    "---",
-    "id: " .. filename,
-    "slug: " .. filename,
-    "tags: " .. filename,
-    "createdDate: " .. current_date,
-    "updatedDate: " .. current_date,
-    "---",
-    "",
-    "# " .. filename,
-    "",
-    "",
-  }
-end
-
 function M.insert_template()
   local filepath = vim.fn.expand("%:p")
   local filename = vim.fn.expand("%:t:r")
@@ -95,7 +84,6 @@ function M.insert_template()
   local is_dir_public_daily = filepath:match("open%-wiki%/daily")
 
   if not is_empty_first_line then
-    print("can not add template because file is not emtpy")
     return
   end
 
@@ -103,9 +91,9 @@ function M.insert_template()
   if is_dir_public_daily then
     template = get_open_wiki_template(filename, current_date)
   elseif is_dir_private_daily then
-    template = get_work_wiki_template(filename, current_date)
+    template = work_wiki_daily_template(filename, current_date)
   else
-    template = get_default_template(filename, current_date)
+    -- use frontmatter snippet
   end
 
   vim.api.nvim_buf_set_lines(0, 0, 0, false, template)

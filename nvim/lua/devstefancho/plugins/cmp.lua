@@ -39,7 +39,9 @@ return {
         vim.keymap.set({ "i", "s" }, "<M-e>", change_choice, { silent = true })
 
         -- import snippets
+        require("luasnip").filetype_extend("vimwiki", { "markdown" })
         require("devstefancho.snips.typescript")
+        require("devstefancho.snips.vimwiki")
       end,
     },
     "saadparwaiz1/cmp_luasnip",
