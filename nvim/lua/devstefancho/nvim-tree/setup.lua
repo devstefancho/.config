@@ -9,7 +9,7 @@ local show_git = true
 local filter_dotfiles = false
 local vimwiki = require("devstefancho.vimwiki")
 if vimwiki.is_current_path_wiki() then
-  show_git = false
+  show_git = true
   filter_dotfiles = true
 end
 
