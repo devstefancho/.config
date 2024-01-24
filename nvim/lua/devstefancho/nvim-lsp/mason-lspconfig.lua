@@ -66,7 +66,7 @@ function M.setup()
           on_attach = f.on_attach,
           capabilities = capabilities,
           handlers = f.tsserver_handlers,
-          filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+          filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx" },
           cmd = { "typescript-language-server", "--stdio" },
         },
       })
