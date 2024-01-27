@@ -93,7 +93,7 @@ function M.insert_template()
   elseif is_dir_private_daily then
     template = work_wiki_daily_template(filename, current_date)
   else
-    -- use frontmatter snippet
+    return -- nothing do, you should frontmatter yourself (use frontmatter snippet)
   end
 
   vim.api.nvim_buf_set_lines(0, 0, 0, false, template)
