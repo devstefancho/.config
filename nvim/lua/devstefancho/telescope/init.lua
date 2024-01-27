@@ -72,18 +72,45 @@ end
 
 function M.find_git_files()
   builtin.git_files(themes.get_dropdown({
-    previewer = false,
     layout_config = {
       center = {
-        height = 0.6,
+        height = 0.3,
         width = 0.6,
       },
     },
   }))
 end
 
+local function get_changed_file_paths()
+  local files = {}
+  local handle = io.popen("git status --porcelain", "r")
+  if handle then
+    for line in handle:lines() do
+      -- Capture only the file path after the status indicators
+      -- example: M src/lua/telescope/init.lua
+      local file_path = line:match("^.*%s+(.+)$")
+      if file_path then
+        table.insert(files, file_path)
+      end
+    end
+    handle:close()
+  end
+  return files
+end
+
 function M.find_git_changes()
-  builtin.git_status(themes.get_ivy({}))
+  vim.ui.select({ "file", "text" }, {
+    prompt = "Find by Git Changes",
+  }, function(choice)
+    if choice == "files" then
+      builtin.git_status(themes.get_ivy({}))
+    elseif choice == "text" then
+      local changed_files = get_changed_file_paths()
+      builtin.live_grep(themes.get_ivy({
+        search_dirs = changed_files,
+      }))
+    end
+  end)
 end
 
 function M.show_diagnostics_error()
