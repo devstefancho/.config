@@ -102,7 +102,7 @@ function M.find_git_changes()
   vim.ui.select({ "file", "text" }, {
     prompt = "Find by Git Changes",
   }, function(choice)
-    if choice == "files" then
+    if choice == "file" then
       builtin.git_status(themes.get_ivy({}))
     elseif choice == "text" then
       local changed_files = get_changed_file_paths()
