@@ -14,13 +14,24 @@ function M.last_modified_date()
     return
   end
 
+  -- Check if the local variable to disable update date
+  local bufnr = vim.api.nvim_get_current_buf()
+  local success, not_update_date = pcall(vim.api.nvim_buf_get_var, bufnr, "not_update_date")
+
+  -- Check if the buffer-local variable not_update_date is set and true
+  if success and not_update_date == 1 then
+    print("Do Not Update Date")
+    return
+  end
+
   -- Check if the current buffer is modified
   if vim.bo.modified then
     -- Save the current cursor position
     local save_cursor = vim.fn.getpos(".")
 
     -- Determine the range for the search and replace
-    local n = math.min(10, vim.fn.line("$"))
+    local max_range_to_check_update_date = 20
+    local n = math.min(max_range_to_check_update_date, vim.fn.line("$"))
 
     -- Update the "updated :" timestamp
     for i = 1, n do

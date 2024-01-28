@@ -28,7 +28,7 @@ local format_title = function()
   return title_case(name)
 end
 
-local format_desc = function()
+local format_summary = function()
   local name = file_name()
   return name:gsub("-", " ")
 end
@@ -52,7 +52,8 @@ published: false
 id: {filename}
 slug: {filename}
 title: {format_title}
-description: {format_desc}
+summary: {format_summary}
+toc: true
 tags: ["{category}"]
 categories: ["{category}"]
 createdDate: {date}
@@ -63,7 +64,45 @@ updatedDate: {date}
     {
       filename = f(file_name),
       format_title = f(format_title),
-      format_desc = f(format_desc),
+      format_summary = f(format_summary),
+      date = f(current_date),
+      category = f(category),
+    }
+  )
+)
+
+local frontmatter_daily = s(
+  {
+    trig = "fmt:daily",
+    name = "Frontmatter",
+    dscr = "Insert frontmatter for vimwiki files",
+  },
+  fmt(
+    [=[
+---
+published: false
+id: {filename}
+slug: {filename}
+title: {filename}
+summary: {filename}
+toc: false
+tags: ["{category}"]
+categories: ["{category}"]
+createdDate: {date}
+updatedDate: {date}
+---
+
+# {filename}
+- [[personal-todo]]
+
+## Task
+- 
+
+## Diary
+
+]=],
+    {
+      filename = f(file_name),
       date = f(current_date),
       category = f(category),
     }
@@ -73,8 +112,5 @@ updatedDate: {date}
 -- Add the snippet to LuaSnip for markdown files (you can change the filetype if necessary)
 ls.add_snippets("vimwiki", {
   frontmatter,
-})
-
-ls.add_snippets("markdown", {
-  frontmatter,
+  frontmatter_daily,
 })
