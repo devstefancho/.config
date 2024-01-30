@@ -49,28 +49,6 @@ function M.last_modified_date()
   end
 end
 
-local function get_open_wiki_template(filename, current_date)
-  return {
-    "---",
-    "id: " .. filename,
-    "tags: daily",
-    "createdDate: " .. current_date,
-    "updatedDate: " .. current_date,
-    "---",
-    "",
-    "# " .. filename,
-    "",
-    "[[personal-todo]]",
-    "",
-    "## Task",
-    "- [ ]  ",
-    "",
-    "## Doc",
-    "- [ ] ",
-    "",
-  }
-end
-
 local function work_wiki_daily_template(filename, current_date)
   return {
     "---",
@@ -100,7 +78,7 @@ function M.insert_template()
 
   local template = {}
   if is_dir_public_daily then
-    template = get_open_wiki_template(filename, current_date)
+    return -- use daily snippet
   elseif is_dir_private_daily then
     template = work_wiki_daily_template(filename, current_date)
   else
