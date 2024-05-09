@@ -6,6 +6,7 @@ local source_names = {
   nvim_lsp = "[lsp]",
   path = "[path]",
   buffer = "[buf]",
+  ["vim-dadbod-completion"] = "[db]",
 }
 
 local duplicates_default = 0
@@ -59,6 +60,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "buffer", keyword_length = 5 },
+    { name = "vim-dadbod-completion" },
   }),
   window = {
     completion = cmp.config.window.bordered(),
