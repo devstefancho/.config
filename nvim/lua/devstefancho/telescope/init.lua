@@ -98,6 +98,11 @@ local function get_changed_file_paths()
   return files
 end
 
+local function get_git_root()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  return git_root
+end
+
 function M.find_git_changes()
   vim.ui.select({ "file", "text" }, {
     prompt = "Find by Git Changes",
@@ -107,6 +112,7 @@ function M.find_git_changes()
     elseif choice == "text" then
       local changed_files = get_changed_file_paths()
       builtin.live_grep(themes.get_ivy({
+        cwd = get_git_root(), -- set cwd to the git root in case neovim is opened from a directory that is not the git root
         search_dirs = changed_files,
       }))
     end
