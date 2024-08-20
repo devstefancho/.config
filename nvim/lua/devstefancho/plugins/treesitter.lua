@@ -36,9 +36,6 @@ return {
           end
         end,
       },
-      context_commentstring = {
-        enable = true,
-      },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -75,15 +72,9 @@ return {
           goto_next_start = {
             ["]]"] = "@function.outer",
           },
-          -- goto_next_end = {
-          --   ["]["] = "@function.outer",
-          -- },
           goto_previous_start = {
             ["[["] = "@function.outer",
           },
-          -- goto_previous_end = {
-          --   ["[]"] = "@function.outer",
-          -- },
         },
       },
     })
