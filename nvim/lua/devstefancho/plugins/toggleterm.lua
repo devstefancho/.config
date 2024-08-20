@@ -47,7 +47,27 @@ return {
       end
 
       vim.api.nvim_create_user_command("YarnDev", _Node_server_toggle, {})
+
+      function _Ollama_toggle()
+        -- ollama run $(ollama list | fzf | awk -F':' '{print $1}')
+        local opts = { buffer = 0 }
+        local ollama = Terminal:new({
+          hidden = true,
+          count = 8,
+          direction = "float",
+          cmd = "ollama run $(ollama list | fzf | awk -F':' '{print $1}')",
+          on_open = function(term)
+            keymap("t", "<esc>", function()
+              term:toggle()
+            end, opts)
+          end,
+        })
+        ollama:toggle()
+      end
+
+      vim.api.nvim_create_user_command("Ollama", _Ollama_toggle, {})
     end,
+
     cond = require("devstefancho.plugins_status").plugins_status["toggleterm"],
   },
 }
