@@ -94,6 +94,7 @@ export PATH="$(yarn global bin):$PATH"
 eval "$(zoxide init zsh)"
 alias cd='z'
 alias zz='z -'
+alias feconf='cd /Users/stefancho/works/hello_feconf/hello_feconf2024; vi -S $(find . -type f -name "Session.*.vim" | fzf)'
 
 # XDG path for lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
