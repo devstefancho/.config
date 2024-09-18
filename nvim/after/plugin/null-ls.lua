@@ -34,6 +34,7 @@ null_ls.setup({
         "yaml",
         "lua",
         "graphql",
+        "svelte",
       },
     }), -- js/ts formatter
     formatting.stylua, -- lua formatter
