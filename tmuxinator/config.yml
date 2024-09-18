@@ -1,0 +1,9 @@
+# /Users/stefancho/.config/tmuxinator/config.yml
+
+name: config
+root: ~/.config
+
+windows:
+  - editor:
+      panes:
+        - nvim

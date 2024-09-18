@@ -1,0 +1,22 @@
+# /Users/stefancho/.config/tmuxinator/wiki.yml
+
+name: wiki
+root: ~/Wiki
+
+windows:
+  - daily:
+      panes:
+        - nvim
+  - todos:
+      layout: main-vertical
+      panes:
+        - todo-base:
+            - nvim ./daily/todos/todo-base.md
+        - todo-work:
+            - nvim ./daily/todos/todo-work.md
+  - areas:
+      panes:
+        - nvim ./areas
+  - resources:
+      panes:
+        - nvim ./resources
