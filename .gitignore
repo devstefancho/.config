@@ -21,3 +21,8 @@ gh
 
 # ignore lazygit state file
 lazygit/state.yml
+
+verdaccio
+gh-copilot
+ngrok
+nvm
