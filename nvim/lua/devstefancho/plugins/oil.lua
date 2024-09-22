@@ -8,8 +8,14 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   config = function()
     local oil = require("oil")
-    oil.setup()
-
-    vim.keymap.set("n", "<leader>e", oil.toggle_float)
+    oil.setup({
+      columns = {
+        "icon",
+      },
+      keymaps = {
+        ["<C-v>"] = "actions.select_vsplit",
+      },
+    })
+    vim.keymap.set("n", "<leader>e", oil.toggle_float, { desc = "[Oil] [F]ile [E]xplorer" })
   end,
 }
