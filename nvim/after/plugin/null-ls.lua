@@ -16,6 +16,9 @@ null_ls.setup({
   -- setup formatters & linters
   sources = {
     formatting.black.with({
+      filetypes = {
+        "python",
+      },
       extra_args = { "--fast" },
     }), -- python formatter
     --  to disable file types use
@@ -38,11 +41,16 @@ null_ls.setup({
       },
     }), -- js/ts formatter
     formatting.stylua, -- lua formatter
-    formatting.eslint_d, -- js/ts formatter
+    -- formatting.eslint_d, -- js/ts formatter
     -- [[ Example for specific path check for eslint ]]
     diagnostics.eslint_d.with({
       -- js/ts linter
       condition = function(utils)
+        local path = vim.fn.getcwd()
+        if string.find(path, "test") then
+          return false
+        end
+
         -- eslint priority order https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file-formats
         local files = {
           ".eslintrc.js",
@@ -72,6 +80,7 @@ null_ls.setup({
         buffer = bufnr,
         callback = function()
           vim.lsp.buf.format({
+            timeout_ms = 3000,
             filter = function(client)
               --  only use null-ls for formatting instead of lsp server
               return client.name == "null-ls"

@@ -36,22 +36,22 @@ telescope.setup({
         },
       },
     },
-    project = {
-      -- If base_dirs updated, remove ~/.local/share/nvim/telescope-projects.txt
-      -- See: https://github.com/nvim-telescope/telescope-project.nvim/issues/53
-      base_dirs = {
-        "~/works",
-        "~/iCloud/Documents",
-      },
-      hidden_files = true, -- default: false
-      theme = "dropdown",
-      order_by = "recent",
-      search_by = "title",
-      sync_with_nvim_tree = true, -- default false
-    },
+    -- project = {
+    --   -- If base_dirs updated, remove ~/.local/share/nvim/telescope-projects.txt
+    --   -- See: https://github.com/nvim-telescope/telescope-project.nvim/issues/53
+    --   base_dirs = {
+    --     "~/works",
+    --     "~/iCloud/Documents",
+    --   },
+    --   hidden_files = true, -- default: false
+    --   theme = "dropdown",
+    --   order_by = "recent",
+    --   search_by = "title",
+    --   sync_with_nvim_tree = true, -- default false
+    -- },
   },
 })
 
 telescope.load_extension("file_browser")
-telescope.load_extension("project")
+-- telescope.load_extension("project")
 telescope.load_extension("harpoon")

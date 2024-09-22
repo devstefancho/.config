@@ -20,16 +20,16 @@ command! GitworktreeSwitch lua require('telescope').extensions.git_worktree.git_
 ]])
 
 -- Auto Commands for Fold
-vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
-  pattern = { "*.*" },
-  desc = "save view (folds), when closing file",
-  command = "mkview",
-})
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*.*" },
-  desc = "load view (folds), when opening file",
-  command = "silent! loadview",
-})
+-- vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+--   pattern = { "*.*" },
+--   desc = "save view (folds), when closing file",
+--   command = "mkview",
+-- })
+-- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+--   pattern = { "*.*" },
+--   desc = "load view (folds), when opening file",
+--   command = "silent! loadview",
+-- })
 
 -- Vimwiki
 local vimwiki = require("devstefancho.vimwiki")
@@ -44,7 +44,8 @@ if vimwiki.is_current_path_wiki() then
   vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
     pattern = "*.md",
     callback = function()
-      vimwiki.insert_template()
+      -- @note use fmt:daily snippet instead
+      -- vimwiki.insert_template()
     end,
   })
 

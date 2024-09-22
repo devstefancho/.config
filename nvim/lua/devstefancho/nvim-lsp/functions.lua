@@ -45,12 +45,48 @@ local filterDefinitionFile = function(value)
   if not uri then
     return false
   end
-  return string.match(uri, "index.d.ts") == nil
+  -- @note client.d.ts 혹은 index.d.ts 파일을 제외 (client.d.ts는 vite 프로젝트에서 exmaple.module.scss로 들어가는 경우)
+  return not string.match(uri, "client.d.ts") and not string.match(uri, "index.d.ts")
 end
 
 -- For Typescript Server
 M.tsserver_handlers = {
   ["textDocument/definition"] = function(err, result, method, ...)
+    -- @note Test code start
+    -- -- 에러 로그 출력
+    -- if err then
+    --   print("Error in LSP handler:", err)
+    -- end
+    --
+    -- 결과 로그 출력
+    -- if result then
+    --   print("LSP result:", vim.inspect(result))
+    -- end
+    --
+    -- -- URI 수정 로직
+    -- local function correct_uri(uri)
+    --   local corrected_uri =
+    --     uri:gsub("/node_modules/vite/client.d.ts", "/src/stories/foundation/colors/Colors.module.scss")
+    --   return corrected_uri
+    -- end
+    --
+    -- -- 결과를 수정
+    -- if vim.tbl_islist(result) then
+    --   for _, res in ipairs(result) do
+    --     if res.targetUri then
+    --       res.targetUri = correct_uri(res.targetUri)
+    --     end
+    --   end
+    -- elseif result.targetUri then
+    --   result.targetUri = correct_uri(result.targetUri)
+    -- end
+    --
+    -- -- 수정된 결과 로그 출력
+    -- if result then
+    --   print("Modified LSP result:", vim.inspect(result))
+    -- end
+    -- @note Test code end
+
     if vim.tbl_islist(result) and #result > 1 then
       local filtered_result = filter(result, filterDefinitionFile)
       return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)

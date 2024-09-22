@@ -60,7 +60,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "buffer", keyword_length = 5 },
-    { name = "vim-dadbod-completion" },
+    { name = "vim-dadbod-completion", priority = 700 },
   }),
   window = {
     completion = cmp.config.window.bordered(),

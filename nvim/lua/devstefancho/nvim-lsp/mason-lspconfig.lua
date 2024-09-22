@@ -46,8 +46,14 @@ function M.setup()
       "marksman",
       "astro", -- install astro lsp with npm install -g @astrojs/language-server (https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#astro)
       "svelte",
+      "pyright",
     },
   })
+  local init_options = {
+    cssmodules_ls = {
+      camelCase = false,
+    },
+  }
 
   mason_lspconfig.setup_handlers({
     function(server_name)
@@ -55,6 +61,7 @@ function M.setup()
         capabilities = capabilities,
         on_attach = f.on_attach,
         settings = servers[server_name],
+        init_options = init_options[server_name],
       })
     end,
 

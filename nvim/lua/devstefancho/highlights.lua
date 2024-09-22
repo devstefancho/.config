@@ -7,3 +7,4 @@ vim.opt.background = "dark"
 
 -- Test Purpose
 vim.api.nvim_set_hl(0, "@devstefancho", { fg = "#000000", bg = "#51576d", bold = true })
+vim.api.nvim_set_hl(0, "@markdown.codeblock", { bg = "#2a2b3c", bold = true })

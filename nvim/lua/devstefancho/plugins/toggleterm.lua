@@ -65,6 +65,22 @@ return {
         ollama:toggle()
       end
 
+      function _Jira_History()
+        local opts = { buffer = 0 }
+        local jira_history = Terminal:new({
+          hidden = true,
+          count = 7,
+          direction = "float",
+          on_open = function(term)
+            keymap("t", "<esc>", function()
+              term:toggle()
+            end, opts)
+            vim.fn.chansend(term.job_id, "jhistory\n")
+          end,
+        })
+        jira_history:toggle()
+      end
+
       vim.api.nvim_create_user_command("Ollama", _Ollama_toggle, {})
     end,
 

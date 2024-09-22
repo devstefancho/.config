@@ -24,7 +24,7 @@ return {
               gs.next_hunk()
             end)
             return "<Ignore>"
-          end, "go to next hunk")
+          end, { expr = true })
 
           keymap("[c", function()
             if vim.wo.diff then
@@ -34,7 +34,7 @@ return {
               gs.prev_hunk()
             end)
             return "<Ignore>"
-          end, "go to prev hunk")
+          end, { expr = true })
 
           -- Actions
           keymap("<leader>ghs", ":Gitsigns stage_hunk<CR>", "[h]unk [s]taged of current line")

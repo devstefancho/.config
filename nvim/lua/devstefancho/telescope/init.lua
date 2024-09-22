@@ -71,14 +71,9 @@ function M.find_commands()
 end
 
 function M.find_git_files()
-  builtin.git_files(themes.get_dropdown({
-    layout_config = {
-      center = {
-        height = 0.3,
-        width = 0.6,
-      },
-    },
-  }))
+  -- @note themes.get_dropdown 사용시에 검색시 검색결과가 일부 안보이는 문제가 있음
+  -- @example count 6개인데, result는 3개만 보임 이때 cursor를 result로 내려서 jk로 이동하면 나머지 3개가 보임
+  builtin.git_files()
 end
 
 local function get_changed_file_paths()
