@@ -32,7 +32,6 @@ function M.setup()
     ensure_installed = {
       "vimls",
       "tsserver",
-      "graphql",
       "cssls",
       "tailwindcss",
       "jsonls",
