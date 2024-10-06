@@ -1,6 +1,6 @@
 gui:
   # stuff relating to the UI
-  windowSize: "half" # one of 'normal' | 'half' | 'full' default is 'normal'
+  windowSize: "normal" # one of 'normal' | 'half' | 'full' default is 'normal'
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   scrollOffMargin: 2 # how many lines to keep before/after the cursor when it reaches the top/bottom of the view; see 'Scroll-off Margin' section below
@@ -109,11 +109,11 @@ notARepository: "prompt" # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
 keybinding:
   universal:
-    quit: "<esc>"
+    quit: "q"
     quit-alt1: "<c-c>" # alternative/alias of quit
-    return: "h" # return to previous menu, will quit if there's nowhere to return
+    return: <esc> # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory: "Q"
-    togglePanel: "" # goto the next panel
+    togglePanel: <tab> # goto the next panel
     prevItem: "<up>" # go one line up
     nextItem: "<down>" # go one line down
     prevItem-alt: "k" # go one line up
@@ -133,8 +133,8 @@ keybinding:
     prevMatch: "N"
     # optionMenu: <disabled> # show help menu
     optionMenu-alt1: "?" # show help menu
-    select: "-" # same keymap with vim fugitive
-    goInto: "l"
+    select: <space> # same keymap with vim fugitive
+    goInto: <enter>
     openRecentRepos: "<c-r>"
     confirm: "<enter>"
     remove: "d"
