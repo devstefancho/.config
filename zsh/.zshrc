@@ -82,7 +82,11 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.local/bin":$PATH
 
 # yarn global
-export PATH="$(yarn global bin):$PATH"
+if [ -f "pnpm-lock.yaml" ]; then
+  echo "Warn: Cannot use yarn global bin in pnpm project"
+else
+  export PATH="$(yarn global bin):$PATH"
+fi
 
 # increase neovim momory usage
 # export NVIM_MEM=4092
