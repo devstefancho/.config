@@ -31,7 +31,7 @@ function M.setup()
   mason_lspconfig.setup({
     ensure_installed = {
       "vimls",
-      "tsserver",
+      "ts_ls",
       "cssls",
       "tailwindcss",
       "jsonls",
@@ -66,17 +66,13 @@ function M.setup()
     end,
 
     -- Override tsserver lsp config
-    ["tsserver"] = function()
-      require("typescript").setup({
-        disable_commands = false,
-        debug = false,
-        server = {
-          on_attach = f.on_attach,
-          capabilities = capabilities,
-          handlers = f.tsserver_handlers,
-          filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx" },
-          cmd = { "typescript-language-server", "--stdio" },
-        },
+    ["ts_ls"] = function()
+      require("lspconfig").ts_ls.setup({
+        on_attach = f.on_attach,
+        capabilities = capabilities,
+        handlers = f.ts_ls_handlers,
+        filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx" },
+        cmd = { "typescript-language-server", "--stdio" },
       })
     end,
   })

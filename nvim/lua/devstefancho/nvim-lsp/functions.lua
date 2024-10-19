@@ -50,7 +50,7 @@ local filterDefinitionFile = function(value)
 end
 
 -- For Typescript Server
-M.tsserver_handlers = {
+M.ts_ls_handlers = {
   ["textDocument/definition"] = function(err, result, method, ...)
     -- @note Test code start
     -- -- 에러 로그 출력

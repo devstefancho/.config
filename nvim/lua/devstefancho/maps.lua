@@ -29,8 +29,8 @@ keymap("v", "<leader>p", '"_dP')
 
 -- Tab Movement
 -- # Caution!! Do not use <Tab> for keymap, <Tab> is vim major key for jump motions (see :help jump-motions)
-keymap("n", "H", ":bp<cr>") -- go to prev buffer
-keymap("n", "L", ":bn<cr>") -- go to next buffer
+keymap("n", "H", ":tabp<cr>") -- go to prev buffer
+keymap("n", "L", ":tabN<cr>") -- go to next buffer
 
 -- Rotate Quickfix List
 -- [[ Warning ]] Do not use keymap starting with q such as q[ q], q is important key for quitting window
