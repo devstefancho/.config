@@ -103,3 +103,6 @@ alias zz='z -'
 
 # XDG path for lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# start neofetch
+command -v neofetch >/dev/null 2>&1 && neofetch
