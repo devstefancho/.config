@@ -49,4 +49,27 @@ function M.IM_alert()
   last_alerted_IM_ID = hs.keycodes.currentSourceID()
 end
 
+-- Function to resize and center the focused window
+function M.resizeAndCenterWindow()
+  local win = hs.window.focusedWindow()
+  if not win then
+    return
+  end
+
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local newWidth = max.w * 0.8
+  local newHeight = max.h * 0.8
+  local newX = max.x + (max.w - newWidth) / 2
+  local newY = max.y + (max.h - newHeight) / 2
+
+  win:setFrame(hs.geometry.rect(newX, newY, newWidth, newHeight))
+end
+
+-- Bind the resize and center function to alt + shift + enter
+hs.hotkey.bind({ "alt", "shift" }, "return", function()
+  M.resizeAndCenterWindow()
+end)
+
 return M
