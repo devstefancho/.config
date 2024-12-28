@@ -65,7 +65,7 @@ alias notes='cd ./works/notes'
 alias ob="cd /Users/stefancho/Documents/Devstefancho\'s\ Vault"
 
 # Print
-alias ll='exa --icons -l --git'
+alias ll='eza --icons -l --git'
 alias cat='bat'
 
 # Remove files
