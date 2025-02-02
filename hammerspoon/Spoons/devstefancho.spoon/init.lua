@@ -53,6 +53,9 @@ end
 function M.resizeAndCenterWindow(size)
   local win = hs.window.focusedWindow()
   if not win then
+    -- if this case happens, check system settings
+    -- System Settings > Privacy & Security > Privacy > Accessibility > Hammerspoon allow
+    print("No focused window")
     return
   end
 
