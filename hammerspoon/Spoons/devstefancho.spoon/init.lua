@@ -50,7 +50,7 @@ function M.IM_alert()
 end
 
 -- Function to resize and center the focused window
-function M.resizeAndCenterWindow()
+function M.resizeAndCenterWindow(size)
   local win = hs.window.focusedWindow()
   if not win then
     return
@@ -59,8 +59,8 @@ function M.resizeAndCenterWindow()
   local screen = win:screen()
   local max = screen:frame()
 
-  local newWidth = max.w * 0.8
-  local newHeight = max.h * 0.8
+  local newWidth = max.w * size
+  local newHeight = max.h * size
   local newX = max.x + (max.w - newWidth) / 2
   local newY = max.y + (max.h - newHeight) / 2
 
@@ -68,8 +68,12 @@ function M.resizeAndCenterWindow()
 end
 
 -- Bind the resize and center function to alt + shift + enter
+hs.hotkey.bind({ "alt", "shift" }, "j", function()
+  M.resizeAndCenterWindow(0.8)
+end)
+
 hs.hotkey.bind({ "alt", "shift" }, "return", function()
-  M.resizeAndCenterWindow()
+  M.resizeAndCenterWindow(1.0)
 end)
 
 return M
