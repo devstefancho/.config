@@ -47,6 +47,7 @@ function M.setup()
       "svelte",
       "pyright",
       "eslint",
+      "terraformls",
     },
   })
   local init_options = {

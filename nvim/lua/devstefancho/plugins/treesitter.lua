@@ -23,6 +23,7 @@ return {
         "diff",
         "gitcommit",
         "styled",
+        "terraform",
       },
       sync_install = false,
       auto_install = true,
