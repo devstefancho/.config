@@ -15,3 +15,7 @@ local remapper = FRemap.new()
 remapper:remap("rcmd", "F19") -- 한/영 변환키
 -- remapper:remap("capslock", "lctrl")
 remapper:register()
+
+-- [[ Invert Mouse Wheel Direction ]]
+local mouseScrollController = hs.loadSpoon("MouseScrollController")
+mouseScrollController:start()
