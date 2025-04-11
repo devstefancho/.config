@@ -37,9 +37,5 @@ keymap("n", "L", ":tabN<cr>") -- go to next buffer
 keymap("n", "]q", "<Cmd>cnext<CR>")
 keymap("n", "[q", "<Cmd>cprev<CR>")
 
--- Move Lines
-keymap("v", "J", ":m '>+1<CR>gv=gv")
-keymap("v", "K", ":m '<-2<CR>gv=gv")
-
 -- Fold
 keymap("n", "<s-Tab>", "za")
